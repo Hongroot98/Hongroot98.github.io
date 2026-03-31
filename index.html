@@ -4,258 +4,279 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>노홍근 (Hong-geun Noh) | Mechanical Design Engineer</title>
-  <meta name="description" content="노홍근 (Hong-geun Noh) - 충남대학교 메카트로닉스공학과, UST 석사과정(국방과학연구소 연계), 기구 설계 엔지니어. 다물체 동역학, 마사지 로봇, 수중건설로봇 연구." />
+  <meta name="description" content="노홍근 (Hong-geun Noh) - 충남대학교 메카트로닉스공학과, UST 석사과정(국방과학연구소 연계), 기구 설계 엔지니어, 다물체 동역학 연구" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+KR:wght@300;400;500;700&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --bg: #0a0a0a; --surface: #111111; --border: #222222;
-      --accent: #c8a97e; --accent2: #4a90a4; --accent3: #7ea87e;
+      --bg: #0a0a0a; --surface: #111111; --surface2: #0e0e0e;
+      --border: #222222; --border2: #1a1a1a;
+      --accent: #c8a97e; --accent2: #4a90a4; --accent3: #7eb89e;
       --text: #e8e4dc; --text-dim: #888880; --text-faint: #444440;
       --mono: 'JetBrains Mono', monospace;
       --sans: 'Noto Sans KR', sans-serif;
       --display: 'Bebas Neue', sans-serif;
+      --gold: #d4a843;
     }
     html { scroll-behavior: smooth; }
     body { background: var(--bg); color: var(--text); font-family: var(--sans); font-weight: 300; line-height: 1.7; overflow-x: hidden; }
-    body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events: none; z-index: 999; opacity: .35; }
+    body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events:none; z-index:999; opacity:.3; }
 
     /* NAV */
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 3rem; border-bottom: 1px solid transparent; transition: border-color .3s, background .3s; }
-    nav.scrolled { background: rgba(10,10,10,.93); border-color: var(--border); backdrop-filter: blur(12px); }
-    .nav-logo { font-family: var(--mono); font-size: .8rem; color: var(--accent); letter-spacing: .15em; text-transform: uppercase; }
-    .nav-links { display: flex; gap: 1.8rem; list-style: none; }
-    .nav-links a { font-family: var(--mono); font-size: .65rem; color: var(--text-dim); text-decoration: none; letter-spacing: .12em; text-transform: uppercase; transition: color .2s; }
-    .nav-links a:hover { color: var(--accent); }
+    nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:1.2rem 3rem; border-bottom:1px solid transparent; transition:border-color .3s,background .3s; }
+    nav.scrolled { background:rgba(10,10,10,.94); border-color:var(--border); backdrop-filter:blur(12px); }
+    .nav-logo { font-family:var(--mono); font-size:.78rem; color:var(--accent); letter-spacing:.15em; text-transform:uppercase; }
+    .nav-links { display:flex; gap:1.8rem; list-style:none; }
+    .nav-links a { font-family:var(--mono); font-size:.65rem; color:var(--text-dim); text-decoration:none; letter-spacing:.12em; text-transform:uppercase; transition:color .2s; }
+    .nav-links a:hover { color:var(--accent); }
 
     /* HERO */
-    #hero { min-height: 100vh; display: grid; place-items: center; position: relative; padding: 8rem 3rem 4rem; overflow: hidden; }
-    .hero-grid-bg { position: absolute; inset: 0; background-image: linear-gradient(rgba(200,169,126,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(200,169,126,.04) 1px, transparent 1px); background-size: 60px 60px; mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 0%, transparent 100%); }
-    .hero-layout { max-width: 960px; width: 100%; position: relative; display: grid; grid-template-columns: 1fr auto; gap: 4rem; align-items: center; }
-    .hero-eyebrow { font-family: var(--mono); font-size: .7rem; color: var(--accent); letter-spacing: .25em; text-transform: uppercase; margin-bottom: 1.5rem; opacity: 0; animation: fadeUp .8s .2s ease forwards; }
-    .hero-name { font-family: var(--display); font-size: clamp(3.5rem,10vw,8rem); line-height: .9; letter-spacing: .02em; color: var(--text); opacity: 0; animation: fadeUp .8s .4s ease forwards; }
-    .hero-name span { color: var(--accent); }
-    .hero-name-en { font-family: var(--mono); font-size: .75rem; color: var(--text-faint); letter-spacing: .2em; margin-top: .8rem; opacity: 0; animation: fadeUp .8s .5s ease forwards; }
-    .hero-subtitle { font-family: var(--mono); font-size: .78rem; color: var(--text-dim); letter-spacing: .1em; margin-top: 1.5rem; border-left: 2px solid var(--accent); padding-left: 1rem; opacity: 0; animation: fadeUp .8s .6s ease forwards; }
-    .hero-desc { margin-top: 1.8rem; max-width: 480px; font-size: .9rem; color: var(--text-dim); line-height: 1.9; opacity: 0; animation: fadeUp .8s .8s ease forwards; }
-    .hero-badges { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.5rem; opacity: 0; animation: fadeUp .8s .9s ease forwards; }
-    .badge { font-family: var(--mono); font-size: .58rem; letter-spacing: .1em; text-transform: uppercase; padding: .25rem .7rem; border: 1px solid var(--accent); color: var(--accent); background: rgba(200,169,126,.07); }
-    .badge.blue { border-color: var(--accent2); color: var(--accent2); background: rgba(74,144,164,.07); }
-    .badge.green { border-color: var(--accent3); color: var(--accent3); background: rgba(126,168,126,.07); }
-    .hero-cta { display: flex; gap: 1rem; margin-top: 2rem; opacity: 0; animation: fadeUp .8s 1s ease forwards; }
-    .btn { font-family: var(--mono); font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; padding: .7rem 1.6rem; text-decoration: none; border: 1px solid; transition: all .25s; }
-    .btn-primary { background: var(--accent); color: var(--bg); border-color: var(--accent); }
-    .btn-primary:hover { background: transparent; color: var(--accent); }
-    .btn-secondary { background: transparent; color: var(--text-dim); border-color: var(--border); }
-    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+    #hero { min-height:100vh; display:grid; place-items:center; position:relative; padding:8rem 3rem 4rem; overflow:hidden; }
+    .hero-grid-bg { position:absolute; inset:0; background-image:linear-gradient(rgba(200,169,126,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(200,169,126,.04) 1px,transparent 1px); background-size:60px 60px; mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 0%,transparent 100%); }
+    .hero-inner { max-width:1040px; width:100%; position:relative; display:grid; grid-template-columns:1fr 340px; gap:4rem; align-items:center; }
+    .hero-left {}
+    .hero-eyebrow { font-family:var(--mono); font-size:.68rem; color:var(--accent); letter-spacing:.25em; text-transform:uppercase; margin-bottom:1.5rem; opacity:0; animation:fadeUp .8s .2s ease forwards; }
+    .hero-name { font-family:var(--display); font-size:clamp(3.5rem,10vw,8.5rem); line-height:.9; letter-spacing:.02em; color:var(--text); opacity:0; animation:fadeUp .8s .4s ease forwards; }
+    .hero-name span { color:var(--accent); }
+    .hero-name-kr { font-family:var(--sans); font-size:1.1rem; font-weight:300; color:var(--text-dim); margin-top:1rem; letter-spacing:.15em; opacity:0; animation:fadeUp .8s .5s ease forwards; }
+    .hero-subtitle { font-family:var(--mono); font-size:.78rem; color:var(--text-dim); letter-spacing:.1em; margin-top:1.8rem; border-left:2px solid var(--accent); padding-left:1rem; opacity:0; animation:fadeUp .8s .6s ease forwards; }
+    .hero-badges { display:flex; flex-wrap:wrap; gap:.5rem; margin-top:1.5rem; opacity:0; animation:fadeUp .8s .8s ease forwards; }
+    .badge { font-family:var(--mono); font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; padding:.28rem .7rem; border:1px solid var(--accent); color:var(--accent); background:rgba(200,169,126,.07); }
+    .badge.blue { border-color:var(--accent2); color:var(--accent2); background:rgba(74,144,164,.07); }
+    .hero-cta { display:flex; gap:1rem; margin-top:2rem; opacity:0; animation:fadeUp .8s .9s ease forwards; }
+    .btn { font-family:var(--mono); font-size:.7rem; letter-spacing:.15em; text-transform:uppercase; padding:.7rem 1.6rem; text-decoration:none; border:1px solid; transition:all .25s; }
+    .btn-primary { background:var(--accent); color:var(--bg); border-color:var(--accent); }
+    .btn-primary:hover { background:transparent; color:var(--accent); }
+    .btn-secondary { background:transparent; color:var(--text-dim); border-color:var(--border); }
+    .btn-secondary:hover { border-color:var(--accent); color:var(--accent); }
 
     /* PROFILE PHOTO */
-    .hero-photo-wrap { opacity: 0; animation: fadeIn 1s .5s ease forwards; flex-shrink: 0; }
-    .hero-photo { width: 220px; height: 280px; border: 1px solid var(--border); position: relative; overflow: hidden; }
-    .hero-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .hero-photo-placeholder { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; background: var(--surface); gap: .8rem; }
-    .hero-photo-placeholder .photo-icon { font-size: 3rem; opacity: .3; }
-    .hero-photo-placeholder p { font-family: var(--mono); font-size: .6rem; color: var(--text-faint); letter-spacing: .15em; text-transform: uppercase; text-align: center; padding: 0 1rem; }
-    .hero-photo::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--accent); }
-    .hero-photo-label { font-family: var(--mono); font-size: .6rem; color: var(--text-faint); letter-spacing: .15em; text-align: center; margin-top: .6rem; text-transform: uppercase; }
+    .hero-photo { opacity:0; animation:fadeIn .8s .5s ease forwards; }
+    .photo-frame { position:relative; width:100%; aspect-ratio:3/4; border:1px solid var(--border); overflow:hidden; background:var(--surface); }
+    .photo-frame img { width:100%; height:100%; object-fit:cover; display:block; }
+    .photo-placeholder { width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1rem; background:linear-gradient(135deg, var(--surface) 0%, #1a1510 100%); }
+    .photo-placeholder-icon { font-size:3rem; opacity:.3; }
+    .photo-placeholder-text { font-family:var(--mono); font-size:.65rem; color:var(--text-faint); letter-spacing:.15em; text-transform:uppercase; text-align:center; line-height:1.8; }
+    .photo-frame::after { content:''; position:absolute; bottom:0; left:0; right:0; height:40%; background:linear-gradient(to top, rgba(10,10,10,.6), transparent); pointer-events:none; }
+    .photo-corner { position:absolute; width:20px; height:20px; border-color:var(--accent); border-style:solid; }
+    .photo-corner.tl { top:8px; left:8px; border-width:2px 0 0 2px; }
+    .photo-corner.tr { top:8px; right:8px; border-width:2px 2px 0 0; }
+    .photo-corner.bl { bottom:8px; left:8px; border-width:0 0 2px 2px; }
+    .photo-corner.br { bottom:8px; right:8px; border-width:0 2px 2px 0; }
+    .photo-label { position:absolute; bottom:1rem; left:1rem; right:1rem; z-index:1; }
+    .photo-label-name { font-family:var(--display); font-size:1.2rem; letter-spacing:.08em; color:var(--text); }
+    .photo-label-role { font-family:var(--mono); font-size:.6rem; color:var(--accent); letter-spacing:.15em; text-transform:uppercase; }
 
-    .scroll-hint { position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: .5rem; opacity: 0; animation: fadeIn 1s 1.5s ease forwards; }
-    .scroll-hint span { font-family: var(--mono); font-size: .6rem; color: var(--text-faint); letter-spacing: .2em; text-transform: uppercase; }
-    .scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, var(--accent), transparent); animation: scrollPulse 2s infinite; }
+    .scroll-hint { position:absolute; bottom:2rem; left:50%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:.5rem; opacity:0; animation:fadeIn 1s 1.5s ease forwards; }
+    .scroll-hint span { font-family:var(--mono); font-size:.58rem; color:var(--text-faint); letter-spacing:.2em; text-transform:uppercase; }
+    .scroll-line { width:1px; height:36px; background:linear-gradient(to bottom,var(--accent),transparent); animation:scrollPulse 2s infinite; }
 
-    /* SECTION BASE */
-    section { padding: 6rem 3rem; }
-    .section-inner { max-width: 960px; margin: 0 auto; }
-    .section-header { display: flex; align-items: baseline; gap: 1.5rem; margin-bottom: 4rem; }
-    .section-num { font-family: var(--mono); font-size: .65rem; color: var(--accent); letter-spacing: .2em; }
-    .section-title { font-family: var(--display); font-size: clamp(2rem,5vw,3.5rem); letter-spacing: .05em; color: var(--text); }
-    .section-line { flex: 1; height: 1px; background: var(--border); max-width: 200px; }
+    /* SECTION */
+    section { padding:6rem 3rem; }
+    .section-inner { max-width:960px; margin:0 auto; }
+    .section-header { display:flex; align-items:baseline; gap:1.5rem; margin-bottom:4rem; }
+    .section-num { font-family:var(--mono); font-size:.62rem; color:var(--accent); letter-spacing:.2em; }
+    .section-title { font-family:var(--display); font-size:clamp(2rem,5vw,3.5rem); letter-spacing:.05em; color:var(--text); }
+    .section-line { flex:1; height:1px; background:var(--border); max-width:200px; }
 
     /* ABOUT */
-    #about { background: var(--surface); }
-    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; }
-    .about-text p { color: var(--text-dim); margin-bottom: 1.2rem; font-size: .93rem; }
-    .about-text p strong { color: var(--accent); font-weight: 500; }
-    .about-text p em { color: var(--accent2); font-style: normal; }
-    .about-keywords { margin-top: 2rem; }
-    .about-keywords h4 { font-family: var(--mono); font-size: .6rem; color: var(--text-faint); letter-spacing: .2em; text-transform: uppercase; margin-bottom: .8rem; }
-    .keyword-chips { display: flex; flex-wrap: wrap; gap: .4rem; }
-    .keyword-chip { font-family: var(--mono); font-size: .6rem; letter-spacing: .08em; padding: .25rem .65rem; border: 1px solid var(--border); color: var(--text-faint); transition: all .2s; cursor: default; }
-    .keyword-chip:hover { border-color: var(--accent2); color: var(--accent2); }
-    .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-content: start; }
-    .stat-card { border: 1px solid var(--border); padding: 1.5rem; position: relative; overflow: hidden; transition: border-color .3s; }
-    .stat-card:hover { border-color: var(--accent); }
-    .stat-card::before { content: ''; position: absolute; top: 0; left: 0; width: 2px; height: 100%; background: var(--accent); }
-    .stat-num { font-family: var(--display); font-size: 2.5rem; color: var(--accent); line-height: 1; }
-    .stat-label { font-family: var(--mono); font-size: .62rem; color: var(--text-faint); letter-spacing: .15em; text-transform: uppercase; margin-top: .4rem; }
-    .stat-sub { font-size: .73rem; color: var(--text-faint); margin-top: .25rem; }
+    #about { background:var(--surface); }
+    .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:5rem; }
+    .about-text p { color:var(--text-dim); margin-bottom:1.2rem; font-size:.92rem; }
+    .about-text p strong { color:var(--accent); font-weight:500; }
+    .about-text p em { color:var(--accent2); font-style:normal; }
+    .about-stats { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; align-content:start; }
+    .stat-card { border:1px solid var(--border); padding:1.5rem; position:relative; overflow:hidden; transition:border-color .3s; }
+    .stat-card:hover { border-color:var(--accent); }
+    .stat-card::before { content:''; position:absolute; top:0; left:0; width:2px; height:100%; background:var(--accent); }
+    .stat-num { font-family:var(--display); font-size:2.4rem; color:var(--accent); line-height:1; }
+    .stat-label { font-family:var(--mono); font-size:.6rem; color:var(--text-faint); letter-spacing:.15em; text-transform:uppercase; margin-top:.4rem; }
+    .stat-sub { font-size:.72rem; color:var(--text-faint); margin-top:.25rem; }
 
-    /* EXPERIENCE */
-    .exp-list { display: flex; flex-direction: column; }
-    .exp-item { display: grid; grid-template-columns: 180px 1fr; gap: 3rem; padding: 2.5rem 0; border-bottom: 1px solid var(--border); position: relative; }
-    .exp-item::before { content: ''; position: absolute; left: 178px; top: 0; bottom: 0; width: 1px; background: var(--border); }
-    .exp-item:last-child { border-bottom: none; }
-    .exp-period { font-family: var(--mono); font-size: .7rem; color: var(--text-faint); letter-spacing: .1em; padding-top: .3rem; }
-    .exp-status { font-family: var(--mono); font-size: .6rem; color: var(--accent); letter-spacing: .1em; margin-top: .4rem; }
-    .exp-dot { position: absolute; left: 173px; top: 2.8rem; width: 11px; height: 11px; border-radius: 50%; background: var(--accent); border: 2px solid var(--bg); }
-    .exp-dot.dim { background: var(--text-faint); }
-    .exp-company { font-family: var(--display); font-size: 1.6rem; letter-spacing: .05em; color: var(--text); margin-bottom: .3rem; }
-    .exp-role { font-family: var(--mono); font-size: .7rem; color: var(--accent); letter-spacing: .12em; text-transform: uppercase; margin-bottom: 1rem; }
-    .exp-desc { font-size: .87rem; color: var(--text-dim); line-height: 1.85; margin-bottom: .8rem; }
-    .exp-bullets { padding-left: 1rem; margin-bottom: .8rem; }
-    .exp-bullets li { font-size: .84rem; color: var(--text-dim); line-height: 1.8; margin-bottom: .3rem; position: relative; list-style: none; }
-    .exp-bullets li::before { content: '—'; position: absolute; left: -1rem; color: var(--accent); }
-    .exp-tags { display: flex; flex-wrap: wrap; gap: .5rem; }
-    .tag { font-family: var(--mono); font-size: .6rem; letter-spacing: .1em; text-transform: uppercase; padding: .3rem .7rem; border: 1px solid var(--border); color: var(--text-faint); }
-    .tag.accent { border-color: var(--accent); color: var(--accent); }
-    .tag.blue { border-color: var(--accent2); color: var(--accent2); }
+    /* AWARDS */
+    #awards { }
+    .award-list { display:flex; flex-direction:column; gap:1.5rem; }
+    .award-card { display:grid; grid-template-columns:80px 1fr; gap:2rem; padding:1.8rem 2rem; border:1px solid var(--border); position:relative; overflow:hidden; transition:border-color .3s; }
+    .award-card:hover { border-color:var(--gold); }
+    .award-card::before { content:''; position:absolute; top:0; left:0; width:3px; height:100%; background:var(--gold); }
+    .award-year { font-family:var(--display); font-size:2rem; color:var(--gold); line-height:1; align-self:center; }
+    .award-badge { font-family:var(--mono); font-size:.6rem; color:var(--gold); letter-spacing:.15em; text-transform:uppercase; margin-bottom:.6rem; }
+    .award-title { font-size:1rem; color:var(--text); font-weight:500; margin-bottom:.4rem; }
+    .award-detail { font-size:.83rem; color:var(--text-dim); line-height:1.7; }
+    .award-tags { display:flex; flex-wrap:wrap; gap:.5rem; margin-top:.8rem; }
+    .award-tag { font-family:var(--mono); font-size:.58rem; letter-spacing:.1em; text-transform:uppercase; padding:.25rem .6rem; border:1px solid var(--gold); color:var(--gold); opacity:.8; }
 
     /* PUBLICATIONS */
-    #publications { background: var(--surface); }
-    .pub-list { display: flex; flex-direction: column; gap: 1.2rem; }
-    .pub-item { border: 1px solid var(--border); padding: 1.5rem 1.8rem; position: relative; transition: border-color .25s; }
-    .pub-item:hover { border-color: var(--accent); }
-    .pub-item::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--accent); opacity: 0; transition: opacity .25s; }
-    .pub-item:hover::before { opacity: 1; }
-    .pub-meta { display: flex; align-items: center; gap: .8rem; margin-bottom: .6rem; flex-wrap: wrap; }
-    .pub-type { font-family: var(--mono); font-size: .58rem; letter-spacing: .15em; text-transform: uppercase; padding: .2rem .6rem; border: 1px solid; }
-    .pub-type.conf { border-color: var(--accent2); color: var(--accent2); }
-    .pub-type.jour { border-color: var(--accent3); color: var(--accent3); }
-    .pub-year { font-family: var(--mono); font-size: .62rem; color: var(--text-faint); letter-spacing: .1em; }
-    .pub-title { font-size: .95rem; color: var(--text); font-weight: 500; line-height: 1.5; margin-bottom: .5rem; }
-    .pub-authors { font-size: .8rem; color: var(--text-dim); margin-bottom: .4rem; }
-    .pub-authors strong { color: var(--accent); font-weight: 500; }
-    .pub-journal { font-size: .78rem; color: var(--text-faint); font-style: italic; margin-bottom: .6rem; }
-    .pub-keywords { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .6rem; }
-    .pub-keyword { font-family: var(--mono); font-size: .58rem; letter-spacing: .08em; padding: .2rem .5rem; border: 1px solid var(--border); color: var(--text-faint); }
-    .pub-link { font-family: var(--mono); font-size: .62rem; color: var(--accent2); text-decoration: none; letter-spacing: .08em; margin-top: .5rem; display: inline-block; transition: opacity .2s; }
-    .pub-link:hover { opacity: .7; }
-    .pub-stats { font-family: var(--mono); font-size: .6rem; color: var(--text-faint); margin-top: .5rem; letter-spacing: .08em; }
+    #publications { background:var(--surface); }
+    .pub-list { display:flex; flex-direction:column; gap:1.2rem; }
+    .pub-item { padding:1.5rem 1.8rem; border:1px solid var(--border); border-left:2px solid var(--accent2); transition:border-color .3s; }
+    .pub-item:hover { border-color:var(--accent2); }
+    .pub-title { font-size:.92rem; color:var(--text); font-weight:500; margin-bottom:.5rem; line-height:1.5; }
+    .pub-meta { font-family:var(--mono); font-size:.65rem; color:var(--text-faint); letter-spacing:.08em; }
+    .pub-keywords { display:flex; flex-wrap:wrap; gap:.4rem; margin-top:.8rem; }
+    .pub-kw { font-family:var(--mono); font-size:.58rem; letter-spacing:.08em; padding:.2rem .55rem; border:1px solid var(--border); color:var(--text-faint); }
+    .pub-kw.highlight { border-color:var(--accent2); color:var(--accent2); }
+
+    /* RESEARCH KEYWORDS */
+    #research-keywords { }
+    .kw-section { margin-bottom:3rem; }
+    .kw-section-title { font-family:var(--mono); font-size:.65rem; color:var(--accent); letter-spacing:.2em; text-transform:uppercase; margin-bottom:1.2rem; padding-bottom:.6rem; border-bottom:1px solid var(--border); }
+    .kw-cloud { display:flex; flex-wrap:wrap; gap:.8rem; }
+    .kw-pill { font-family:var(--mono); font-size:.72rem; letter-spacing:.1em; padding:.5rem 1rem; border:1px solid; transition:all .25s; cursor:default; }
+    .kw-pill.lg { font-size:.8rem; padding:.6rem 1.2rem; }
+    .kw-pill.md { font-size:.72rem; }
+    .kw-pill.sm { font-size:.65rem; opacity:.8; }
+    .kw-pill.accent { border-color:var(--accent); color:var(--accent); background:rgba(200,169,126,.06); }
+    .kw-pill.blue { border-color:var(--accent2); color:var(--accent2); background:rgba(74,144,164,.06); }
+    .kw-pill.green { border-color:var(--accent3); color:var(--accent3); background:rgba(126,184,158,.06); }
+    .kw-pill.dim { border-color:var(--border); color:var(--text-faint); }
+
+    /* EXPERIENCE */
+    #experience { background:var(--surface); }
+    .exp-list { display:flex; flex-direction:column; }
+    .exp-item { display:grid; grid-template-columns:180px 1fr; gap:3rem; padding:2.5rem 0; border-bottom:1px solid var(--border); position:relative; }
+    .exp-item::before { content:''; position:absolute; left:178px; top:0; bottom:0; width:1px; background:var(--border); }
+    .exp-item:last-child { border-bottom:none; }
+    .exp-period { font-family:var(--mono); font-size:.68rem; color:var(--text-faint); letter-spacing:.1em; padding-top:.3rem; }
+    .exp-status { font-family:var(--mono); font-size:.58rem; color:var(--accent); letter-spacing:.1em; margin-top:.4rem; }
+    .exp-dot { position:absolute; left:173px; top:2.8rem; width:11px; height:11px; border-radius:50%; background:var(--accent); border:2px solid var(--bg); }
+    .exp-dot.dim { background:var(--text-faint); }
+    .exp-company { font-family:var(--display); font-size:1.6rem; letter-spacing:.05em; color:var(--text); margin-bottom:.3rem; }
+    .exp-role { font-family:var(--mono); font-size:.68rem; color:var(--accent); letter-spacing:.12em; text-transform:uppercase; margin-bottom:1rem; }
+    .exp-desc { font-size:.87rem; color:var(--text-dim); line-height:1.85; margin-bottom:.8rem; }
+    .exp-bullets { padding-left:1rem; margin-bottom:.8rem; }
+    .exp-bullets li { font-size:.84rem; color:var(--text-dim); line-height:1.8; margin-bottom:.25rem; list-style:none; position:relative; }
+    .exp-bullets li::before { content:'—'; position:absolute; left:-1rem; color:var(--accent); }
+    .exp-tags { display:flex; flex-wrap:wrap; gap:.45rem; }
+    .tag { font-family:var(--mono); font-size:.58rem; letter-spacing:.1em; text-transform:uppercase; padding:.25rem .65rem; border:1px solid var(--border); color:var(--text-faint); }
+    .tag.accent { border-color:var(--accent); color:var(--accent); }
+    .tag.blue { border-color:var(--accent2); color:var(--accent2); }
 
     /* EDUCATION */
     #education { }
-    .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-    .edu-card { border: 1px solid var(--border); padding: 2rem 2rem 2rem 2.5rem; position: relative; overflow: hidden; transition: border-color .3s; }
-    .edu-card:hover { border-color: var(--accent); }
-    .edu-card::before { content: ''; position: absolute; top: 0; left: 0; width: 2px; height: 100%; background: var(--accent); opacity: 0; transition: opacity .3s; }
-    .edu-card:hover::before { opacity: 1; }
-    .edu-badge { font-family: var(--mono); font-size: .6rem; color: var(--accent); letter-spacing: .2em; text-transform: uppercase; margin-bottom: .8rem; }
-    .edu-school { font-family: var(--display); font-size: 1.5rem; letter-spacing: .04em; line-height: 1.2; margin-bottom: .5rem; }
-    .edu-major { font-size: .9rem; color: var(--text); margin-bottom: .3rem; font-weight: 500; }
-    .edu-detail { font-size: .78rem; color: var(--text-faint); margin-bottom: .2rem; }
-    .edu-period { font-family: var(--mono); font-size: .65rem; color: var(--text-faint); letter-spacing: .1em; margin-top: .5rem; }
-    .edu-note { font-size: .78rem; color: var(--accent2); margin-top: .8rem; padding: .5rem .8rem; border-left: 2px solid var(--accent2); background: rgba(74,144,164,.06); line-height: 1.7; }
+    .edu-grid { display:grid; grid-template-columns:1fr 1fr; gap:2rem; }
+    .edu-card { border:1px solid var(--border); padding:2rem 2rem 2rem 2.5rem; position:relative; overflow:hidden; transition:border-color .3s; }
+    .edu-card:hover { border-color:var(--accent); }
+    .edu-card::before { content:''; position:absolute; top:0; left:0; width:2px; height:100%; background:var(--accent); opacity:0; transition:opacity .3s; }
+    .edu-card:hover::before { opacity:1; }
+    .edu-badge { font-family:var(--mono); font-size:.58rem; color:var(--accent); letter-spacing:.2em; text-transform:uppercase; margin-bottom:.8rem; }
+    .edu-school { font-family:var(--display); font-size:1.5rem; letter-spacing:.04em; line-height:1.2; margin-bottom:.5rem; }
+    .edu-major { font-size:.88rem; color:var(--text); margin-bottom:.3rem; font-weight:500; }
+    .edu-detail { font-size:.78rem; color:var(--text-faint); margin-bottom:.3rem; }
+    .edu-period { font-family:var(--mono); font-size:.63rem; color:var(--text-faint); letter-spacing:.1em; margin-top:.5rem; }
+    .edu-note { font-size:.76rem; color:var(--accent2); margin-top:.8rem; padding:.5rem .8rem; border-left:2px solid var(--accent2); background:rgba(74,144,164,.06); line-height:1.7; }
 
     /* SKILLS */
-    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
-    .skill-group-title { font-family: var(--mono); font-size: .65rem; color: var(--accent); letter-spacing: .2em; text-transform: uppercase; margin-bottom: 1.2rem; padding-bottom: .6rem; border-bottom: 1px solid var(--border); }
-    .skill-item { display: flex; justify-content: space-between; align-items: center; padding: .5rem 0; border-bottom: 1px solid rgba(255,255,255,.04); }
-    .skill-name { font-size: .83rem; color: var(--text-dim); }
-    .skill-bar { width: 80px; height: 2px; background: var(--border); position: relative; }
-    .skill-bar-fill { position: absolute; top: 0; left: 0; height: 100%; background: var(--accent); }
-
-    /* ACADEMIC */
-    #academic { background: var(--surface); }
-    .academic-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
-    .academic-block h3 { font-family: var(--mono); font-size: .65rem; color: var(--accent); letter-spacing: .2em; text-transform: uppercase; margin-bottom: 1.5rem; padding-bottom: .6rem; border-bottom: 1px solid var(--border); }
-    .course-list { display: flex; flex-direction: column; gap: .7rem; }
-    .course-item { display: flex; gap: 1rem; align-items: flex-start; padding: .75rem 1rem; border: 1px solid var(--border); transition: border-color .25s; }
-    .course-item:hover { border-color: var(--accent); }
-    .course-code { font-family: var(--mono); font-size: .6rem; color: var(--accent); letter-spacing: .1em; min-width: 55px; padding-top: .1rem; flex-shrink: 0; }
-    .course-name { font-size: .83rem; color: var(--text-dim); }
-    .research-area { display: flex; flex-direction: column; gap: .9rem; }
-    .research-item { padding: 1rem 1.2rem; border: 1px solid var(--border); border-left: 2px solid var(--accent2); transition: border-color .25s; }
-    .research-item:hover { border-color: var(--accent2); }
-    .research-title { font-size: .88rem; color: var(--text); font-weight: 500; margin-bottom: .3rem; }
-    .research-desc { font-size: .78rem; color: var(--text-faint); line-height: 1.7; }
+    #skills { background:var(--surface); }
+    .skills-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; }
+    .skill-group-title { font-family:var(--mono); font-size:.63rem; color:var(--accent); letter-spacing:.2em; text-transform:uppercase; margin-bottom:1.2rem; padding-bottom:.6rem; border-bottom:1px solid var(--border); }
+    .skill-item { display:flex; justify-content:space-between; align-items:center; padding:.5rem 0; border-bottom:1px solid rgba(255,255,255,.04); }
+    .skill-name { font-size:.82rem; color:var(--text-dim); }
+    .skill-bar { width:80px; height:2px; background:var(--border); position:relative; }
+    .skill-bar-fill { position:absolute; top:0; left:0; height:100%; background:var(--accent); }
 
     /* CONTACT */
-    .contact-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
-    .contact-text h3 { font-family: var(--display); font-size: 2.5rem; letter-spacing: .05em; margin-bottom: 1rem; }
-    .contact-text p { font-size: .88rem; color: var(--text-dim); line-height: 1.9; }
-    .contact-links { display: flex; flex-direction: column; gap: 1rem; }
-    .contact-link { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.2rem; border: 1px solid var(--border); text-decoration: none; color: var(--text-dim); font-size: .85rem; transition: all .25s; }
-    .contact-link:hover { border-color: var(--accent); color: var(--accent); }
-    .contact-icon { font-family: var(--mono); font-size: .68rem; color: var(--accent); width: 28px; text-align: center; flex-shrink: 0; }
+    #contact { }
+    .contact-wrap { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:start; }
+    .contact-text h3 { font-family:var(--display); font-size:2.5rem; letter-spacing:.05em; margin-bottom:1rem; }
+    .contact-text p { font-size:.88rem; color:var(--text-dim); line-height:1.9; }
+    .contact-links { display:flex; flex-direction:column; gap:1rem; }
+    .contact-link { display:flex; align-items:center; gap:1rem; padding:1rem 1.2rem; border:1px solid var(--border); text-decoration:none; color:var(--text-dim); font-size:.83rem; transition:all .25s; }
+    .contact-link:hover { border-color:var(--accent); color:var(--accent); }
+    .contact-icon { font-family:var(--mono); font-size:.65rem; color:var(--accent); width:24px; text-align:center; flex-shrink:0; }
 
-    footer { padding: 2rem 3rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
-    footer p { font-family: var(--mono); font-size: .63rem; color: var(--text-faint); letter-spacing: .1em; }
+    /* FOOTER */
+    footer { padding:2rem 3rem; border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; }
+    footer p { font-family:var(--mono); font-size:.62rem; color:var(--text-faint); letter-spacing:.1em; }
 
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-    @keyframes scrollPulse { 0%, 100% { opacity: .3; } 50% { opacity: 1; } }
-    .reveal { opacity: 0; transform: translateY(30px); transition: opacity .7s ease, transform .7s ease; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
+    /* ANIMATIONS */
+    @keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+    @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+    @keyframes scrollPulse { 0%,100%{opacity:.3} 50%{opacity:1} }
+    .reveal { opacity:0; transform:translateY(28px); transition:opacity .7s ease,transform .7s ease; }
+    .reveal.visible { opacity:1; transform:translateY(0); }
 
-    @media (max-width: 900px) {
-      .hero-layout { grid-template-columns: 1fr; }
-      .hero-photo-wrap { display: none; }
+    /* RESPONSIVE */
+    @media (max-width:900px) {
+      .hero-inner { grid-template-columns:1fr; }
+      .hero-photo { display:none; }
     }
-    @media (max-width: 768px) {
-      nav { padding: 1rem 1.5rem; } .nav-links { display: none; }
-      section { padding: 4rem 1.5rem; }
-      .about-grid, .edu-grid, .skills-grid, .academic-grid, .contact-wrap { grid-template-columns: 1fr; gap: 2rem; }
-      .exp-item { grid-template-columns: 1fr; gap: .5rem; }
-      .exp-item::before, .exp-dot { display: none; }
-      footer { flex-direction: column; gap: 1rem; text-align: center; }
+    @media (max-width:768px) {
+      nav { padding:1rem 1.5rem; } .nav-links { display:none; }
+      section { padding:4rem 1.5rem; }
+      .about-grid,.edu-grid,.skills-grid,.contact-wrap { grid-template-columns:1fr; gap:2rem; }
+      .exp-item { grid-template-columns:1fr; gap:.5rem; }
+      .exp-item::before,.exp-dot { display:none; }
+      .award-card { grid-template-columns:1fr; gap:1rem; }
+      footer { flex-direction:column; gap:1rem; text-align:center; }
     }
   </style>
 </head>
 <body>
 
 <nav id="nav">
-  <div class="nav-logo">Roh · Hongguen</div>
+  <div class="nav-logo">Hong-geun Noh · 노홍근</div>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
+    <li><a href="#awards">Awards</a></li>
+    <li><a href="#publications">Papers</a></li>
+    <li><a href="#research-keywords">Research</a></li>
     <li><a href="#experience">Experience</a></li>
-    <li><a href="#publications">Publications</a></li>
     <li><a href="#education">Education</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#academic">Research</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
 
+<!-- HERO -->
 <section id="hero">
   <div class="hero-grid-bg"></div>
-  <div class="hero-layout">
-    <div>
-      <p class="hero-eyebrow">// Mechanical Design Engineer · Defense &amp; Sensor Systems</p>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <p class="hero-eyebrow">// Mechanical Design Engineer · Researcher · Defense &amp; Robotics</p>
       <h1 class="hero-name">ROH<br><span>HONG</span><br>GUEN</h1>
-      <p class="hero-name-en">Hong-geun Noh (노홍근)</p>
-      <p class="hero-subtitle">충남대 메카트로닉스공학과 &nbsp;·&nbsp; UST 석사과정 &nbsp;·&nbsp; ADD 연계</p>
-      <p class="hero-desc">기계공학과 전자공학의 경계를 넘나드는 메카트로닉스 엔지니어. 다물체 동역학, 로봇 기구학, 방위산업 센서 설계 분야 연구 및 실무 경험을 보유하고 있습니다.</p>
+      <p class="hero-name-kr">노홍근 &nbsp;/&nbsp; Hong-geun Noh</p>
+      <p class="hero-subtitle">충남대 메카트로닉스 &nbsp;·&nbsp; UST 석사(ADD) &nbsp;·&nbsp; 기구 설계 엔지니어</p>
       <div class="hero-badges">
         <span class="badge">기구 설계</span>
-        <span class="badge">센서 부품</span>
+        <span class="badge">다물체 동역학</span>
+        <span class="badge blue">RecurDyn 금상</span>
         <span class="badge">방위산업</span>
-        <span class="badge blue">다물체 동역학</span>
-        <span class="badge blue">로봇 기구학</span>
-        <span class="badge green">UST 석사과정</span>
-        <span class="badge green">ADD 연계</span>
+        <span class="badge blue">수중건설로봇</span>
+        <span class="badge">UST 석사(ADD)</span>
       </div>
       <div class="hero-cta">
-        <a href="#publications" class="btn btn-primary">논문 보기</a>
+        <a href="#awards" class="btn btn-primary">수상·논문 보기</a>
         <a href="#contact" class="btn btn-secondary">연락하기</a>
       </div>
     </div>
-    <div class="hero-photo-wrap">
-      <div class="hero-photo">
-        <!-- 사진을 추가하려면 이 img 태그의 src를 변경하세요 -->
-        <!-- <img src="photo.jpg" alt="노홍근 프로필 사진" /> -->
-        <div class="hero-photo-placeholder">
-          <span class="photo-icon">👤</span>
-          <p>사진을<br>추가하세요</p>
+
+    <!-- PROFILE PHOTO -->
+    <div class="hero-photo">
+      <div class="photo-frame">
+        <!-- 사진 교체 방법: 아래 img 태그의 주석을 해제하고 src에 사진 파일명 입력
+             예) <img src="photo.jpg" alt="노홍근" />
+             그 다음 photo-placeholder div를 삭제하세요 -->
+        <div class="photo-placeholder">
+          <div class="photo-placeholder-icon">👤</div>
+          <div class="photo-placeholder-text">사진을 여기에<br>업로드하세요<br><br>photo.jpg 파일을<br>저장소에 추가 후<br>img src 수정</div>
+        </div>
+        <div class="photo-corner tl"></div>
+        <div class="photo-corner tr"></div>
+        <div class="photo-corner bl"></div>
+        <div class="photo-corner br"></div>
+        <div class="photo-label">
+          <div class="photo-label-name">노홍근</div>
+          <div class="photo-label-role">Mechanical Design Engineer</div>
         </div>
       </div>
-      <p class="hero-photo-label">Roh Hong-geun · 노홍근</p>
     </div>
   </div>
   <div class="scroll-hint"><span>Scroll</span><div class="scroll-line"></div></div>
 </section>
 
+<!-- ABOUT -->
 <section id="about">
   <div class="section-inner">
     <div class="section-header reveal">
@@ -263,24 +284,14 @@
     </div>
     <div class="about-grid">
       <div class="about-text reveal">
-        <p>충남대학교 <strong>메카트로닉스공학과</strong>에서 기계·전자·컴퓨터 융합 공학을 전공했습니다. 재학 중 <strong>다물체 동역학(Multibody Dynamics)</strong>, <strong>마사지 로봇</strong>, <strong>수중건설로봇</strong> 등의 분야에서 연구 활동을 수행하며 학술 논문을 발표했습니다.</p>
+        <p>충남대학교 <strong>메카트로닉스공학과</strong>에서 기계·전자·컴퓨터 융합 공학을 전공했습니다. 재학 중 RecurDyn 시뮬레이션 기반 로봇 연구로 <em>전국 경진대회 금상</em>을 수상하며 연구 역량을 인정받았습니다.</p>
         <p>첫 직장인 <strong>로보티즈(ROBOTIS)</strong>에서 로봇 부품 품질 관리 및 불량 분석 업무를 통해 제품 구조에 대한 깊은 이해를 쌓은 뒤, <strong>풍산FNS</strong>로 이직해 센서 기구 설계 직무로 전환했습니다.</p>
         <p>현재는 <strong>국방과학연구소(ADD)</strong>와 연계된 UST 석사과정에서 연구를 병행하며, 방위산업·첨단 기계 설계 분야의 심화 역량을 쌓아가고 있습니다.</p>
-        <div class="about-keywords">
-          <h4>// 연구 키워드 (DBpia 등록)</h4>
-          <div class="keyword-chips">
-            <span class="keyword-chip">다물체 동역학 (Multibody dynamics)</span>
-            <span class="keyword-chip">마사지 로봇 (Massage robot)</span>
-            <span class="keyword-chip">수중건설로봇 (Under-water construction robot)</span>
-            <span class="keyword-chip">실시간 해석 (Real-time analysis)</span>
-            <span class="keyword-chip">유체력 효과 (Hydro-dynamics effects)</span>
-            <span class="keyword-chip">접촉력 (Contact force)</span>
-          </div>
-        </div>
+        <p><strong>다물체 동역학(Multibody dynamics)</strong>, 접촉력, 유체력 등 시뮬레이션 해석 분야의 연구 경험을 실무 설계 역량과 결합해 발전시키고 있습니다.</p>
       </div>
       <div class="about-stats reveal">
         <div class="stat-card"><div class="stat-num">3+</div><div class="stat-label">Years Experience</div><div class="stat-sub">2023년 ~ 현재</div></div>
-        <div class="stat-card"><div class="stat-num">164</div><div class="stat-label">논문 이용수</div><div class="stat-sub">DBpia 기준</div></div>
+        <div class="stat-card"><div class="stat-num">🥇</div><div class="stat-label">경진대회 금상</div><div class="stat-sub">RecurDyn 2021</div></div>
         <div class="stat-card"><div class="stat-num">ADD</div><div class="stat-label">현 소속 연구기관</div><div class="stat-sub">국방과학연구소</div></div>
         <div class="stat-card"><div class="stat-num">UST</div><div class="stat-label">석사과정 재학</div><div class="stat-sub">과학기술연합대학원</div></div>
       </div>
@@ -288,49 +299,36 @@
   </div>
 </section>
 
-<section id="experience">
+<!-- AWARDS -->
+<section id="awards">
   <div class="section-inner">
     <div class="section-header reveal">
-      <span class="section-num">02</span><h2 class="section-title">EXPERIENCE</h2><div class="section-line"></div>
+      <span class="section-num">02</span><h2 class="section-title">AWARDS</h2><div class="section-line"></div>
     </div>
-    <div class="exp-list">
-      <div class="exp-item reveal">
-        <div><div class="exp-period">2024 — 현재</div><div class="exp-status">● 재직 중</div></div>
-        <div class="exp-dot"></div>
+    <div class="award-list">
+
+      <div class="award-card reveal">
+        <div class="award-year">2021</div>
         <div>
-          <div class="exp-company">풍산FNS</div>
-          <div class="exp-role">Sensor Mechanical Design Engineer · 기구 설계</div>
-          <div class="exp-desc">방위산업 분야 센서 부품 기구 설계 담당. 정밀 센서 컴포넌트의 설계 도면 작성부터 시제품 검증, 양산 대응까지 전 과정 참여.</div>
-          <ul class="exp-bullets">
-            <li>센서 기구 부품 3D 모델링 및 2D 도면 작성</li>
-            <li>방위산업 품질 기준에 따른 설계 검증 및 시제품 평가</li>
-            <li>양산 공정 연계 설계 개선 및 유관 부서 협업</li>
-            <li>설계 이슈 대응 및 기술 문서 작성</li>
-          </ul>
-          <div class="exp-tags">
-            <span class="tag accent">기구 설계</span><span class="tag accent">센서 부품</span><span class="tag accent">CAD 모델링</span>
-            <span class="tag">방위산업</span><span class="tag">2D 도면</span><span class="tag">시제품 검증</span>
+          <div class="award-badge">🥇 금상 (1위) · 상금 150만원</div>
+          <div class="award-title">2021 RECURDYN Simulation 경진대회</div>
+          <div class="award-detail">
+            충남대학교 메카트로닉스공학과 <strong>잡아달랩</strong> 팀(조재범, 노홍근, 정형진 / 지도교수 김성수)으로 참가해 전국 1위 금상 수상.<br><br>
+            주제: <em>"Mobile Shopping Robot : using UR3 manipulator &amp; Transforming gripper"</em><br>
+            RecurDyn 시뮬레이션을 활용한 Mobile Shopping Robot 설계·검증. 참신한 아이디어와 시뮬레이션 적합성, 특히 CAE 소프트웨어를 이용한 해석 결과 분석의 이해도가 높은 점에서 최종 결선 4팀 중 1위 선정.<br><br>
+            주최: 펑션베이(주) / 대상: 전국 대학생·대학원생 / 기간: 2021.06.28 ~ 08.26
+          </div>
+          <div class="award-tags">
+            <span class="award-tag">RecurDyn</span>
+            <span class="award-tag">다물체 동역학</span>
+            <span class="award-tag">Mobile Robot</span>
+            <span class="award-tag">UR3 Manipulator</span>
+            <span class="award-tag">CAE 시뮬레이션</span>
+            <span class="award-tag">전국 1위</span>
           </div>
         </div>
       </div>
-      <div class="exp-item reveal">
-        <div><div class="exp-period">2023 — 2024</div></div>
-        <div class="exp-dot dim"></div>
-        <div>
-          <div class="exp-company">로보티즈 (ROBOTIS)</div>
-          <div class="exp-role">Quality Engineer · 품질 관리</div>
-          <div class="exp-desc">로봇 부품 및 모듈의 품질 관리 업무 담당. 불량 분석(Defect Analysis)과 수리·보수를 통해 로봇 제품의 구조적 특성과 고장 메커니즘을 심층 이해.</div>
-          <ul class="exp-bullets">
-            <li>다이나믹셀(Dynamixel) 등 로봇 액추에이터 불량 원인 분석</li>
-            <li>현장 품질 이슈 신속 대응 및 수리 업무 수행</li>
-            <li>불량 유형 분류 및 통계 관리를 통한 품질 개선 기여</li>
-          </ul>
-          <div class="exp-tags">
-            <span class="tag accent">품질 관리 (QC)</span><span class="tag accent">불량 분석</span>
-            <span class="tag blue">로봇 부품</span><span class="tag">수리·보수</span>
-          </div>
-        </div>
-      </div>
+
     </div>
   </div>
 </section>
@@ -344,62 +342,139 @@
     <div class="pub-list">
 
       <div class="pub-item reveal">
-        <div class="pub-meta">
-          <span class="pub-type conf">Conference</span>
-          <span class="pub-year">2024</span>
-        </div>
-        <div class="pub-title">수중건설로봇의 다물체 동역학 실시간 해석을 위한 유체력 효과 모델링</div>
-        <div class="pub-authors"><strong>노홍근</strong> 외 공저자</div>
-        <div class="pub-journal">충남대학교 메카트로닉스공학과 · 한국 학술대회 발표</div>
+        <div class="pub-title">다물체 동역학(Multibody dynamics) 기반 로봇 시스템 연구</div>
+        <div class="pub-meta">노홍근 (Hong-geun Noh) &nbsp;·&nbsp; 충남대학교 메카트로닉스공학과 &nbsp;·&nbsp; DBpia 등재</div>
         <div class="pub-keywords">
-          <span class="pub-keyword">수중건설로봇</span>
-          <span class="pub-keyword">다물체 동역학</span>
-          <span class="pub-keyword">실시간 해석</span>
-          <span class="pub-keyword">유체력 효과</span>
+          <span class="pub-kw highlight">다물체 동역학</span>
+          <span class="pub-kw highlight">Multibody dynamics</span>
+          <span class="pub-kw highlight">실시간 해석</span>
+          <span class="pub-kw">Real-time analysis</span>
+          <span class="pub-kw">접촉력</span>
+          <span class="pub-kw">Contact force</span>
         </div>
-        <a href="https://www.dbpia.co.kr/author/authorDetail?ancId=4967786" target="_blank" class="pub-link">→ DBpia 저자 페이지</a>
-        <div class="pub-stats">총 이용수 164 · DBpia 등록 논문</div>
       </div>
 
       <div class="pub-item reveal">
-        <div class="pub-meta">
-          <span class="pub-type conf">Conference</span>
-          <span class="pub-year">2023 — 2024</span>
-        </div>
-        <div class="pub-title">마사지 로봇의 접촉력 기반 다물체 동역학 해석</div>
-        <div class="pub-authors"><strong>노홍근</strong> 외 공저자</div>
-        <div class="pub-journal">충남대학교 메카트로닉스공학과 · 학술대회 발표</div>
+        <div class="pub-title">마사지 로봇(Massage robot) 관련 연구</div>
+        <div class="pub-meta">노홍근 (Hong-geun Noh) &nbsp;·&nbsp; 충남대학교 메카트로닉스공학과 &nbsp;·&nbsp; DBpia 등재</div>
         <div class="pub-keywords">
-          <span class="pub-keyword">마사지 로봇</span>
-          <span class="pub-keyword">접촉력</span>
-          <span class="pub-keyword">다물체 동역학</span>
+          <span class="pub-kw highlight">마사지 로봇</span>
+          <span class="pub-kw highlight">Massage robot</span>
+          <span class="pub-kw">접촉력</span>
+          <span class="pub-kw">Contact force</span>
+          <span class="pub-kw">다물체 동역학</span>
         </div>
-        <a href="https://www.dbpia.co.kr/author/authorDetail?ancId=4967786" target="_blank" class="pub-link">→ DBpia 저자 페이지</a>
-        <div class="pub-stats">공학 > 기계공학 > 기계공학 일반</div>
       </div>
 
-      <div class="pub-item reveal" style="border-style: dashed; opacity: .7;">
-        <div class="pub-meta">
-          <span class="pub-type conf">더 많은 논문</span>
-        </div>
-        <div class="pub-title">전체 논문 목록은 DBpia 저자 페이지에서 확인하세요</div>
-        <div class="pub-authors">노홍근 (Hong-geun Noh) · 충남대학교 메카트로닉스공학과</div>
+      <div class="pub-item reveal">
+        <div class="pub-title">수중건설로봇(Under-water construction robot) 유체력 효과 연구</div>
+        <div class="pub-meta">노홍근 (Hong-geun Noh) &nbsp;·&nbsp; 충남대학교 메카트로닉스공학과 &nbsp;·&nbsp; DBpia 등재</div>
         <div class="pub-keywords">
-          <span class="pub-keyword">소속: 충남대학교</span>
-          <span class="pub-keyword">분야: 기계공학</span>
-          <span class="pub-keyword">이용수: 164</span>
+          <span class="pub-kw highlight">수중건설로봇</span>
+          <span class="pub-kw highlight">Under-water construction robot</span>
+          <span class="pub-kw highlight">유체력 효과</span>
+          <span class="pub-kw">Hydro-dynamics effects</span>
+          <span class="pub-kw">실시간 해석</span>
         </div>
-        <a href="https://www.dbpia.co.kr/author/authorDetail?ancId=4967786" target="_blank" class="pub-link">→ DBpia 전체 논문 목록 보기</a>
       </div>
 
+    </div>
+    <p style="margin-top:2rem; font-family:var(--mono); font-size:.65rem; color:var(--text-faint); letter-spacing:.1em;">
+      * 상세 논문 정보: <a href="https://www.dbpia.co.kr/author/authorDetail?ancId=4967786" target="_blank" style="color:var(--accent2); text-decoration:none;">DBpia 저자 페이지 →</a>
+    </p>
+  </div>
+</section>
+
+<!-- RESEARCH KEYWORDS -->
+<section id="research-keywords">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="section-num">04</span><h2 class="section-title">RESEARCH</h2><div class="section-line"></div>
+    </div>
+
+    <div class="kw-section reveal">
+      <div class="kw-section-title">// 주요 연구 키워드 (DBpia 등록)</div>
+      <div class="kw-cloud">
+        <span class="kw-pill lg accent">다물체 동역학<br><small style="font-size:.55rem;opacity:.7">Multibody dynamics</small></span>
+        <span class="kw-pill lg blue">수중건설로봇<br><small style="font-size:.55rem;opacity:.7">Under-water construction robot</small></span>
+        <span class="kw-pill md accent">마사지 로봇<br><small style="font-size:.55rem;opacity:.7">Massage robot</small></span>
+        <span class="kw-pill md green">실시간 해석<br><small style="font-size:.55rem;opacity:.7">Real-time analysis</small></span>
+        <span class="kw-pill md blue">유체력 효과<br><small style="font-size:.55rem;opacity:.7">Hydro-dynamics effects</small></span>
+        <span class="kw-pill sm accent">접촉력<br><small style="font-size:.55rem;opacity:.7">Contact force</small></span>
+      </div>
+    </div>
+
+    <div class="kw-section reveal">
+      <div class="kw-section-title">// 기술 & 실무 키워드</div>
+      <div class="kw-cloud">
+        <span class="kw-pill md accent">기구 설계</span>
+        <span class="kw-pill md accent">CAD 모델링</span>
+        <span class="kw-pill md blue">RecurDyn</span>
+        <span class="kw-pill md blue">CAE 시뮬레이션</span>
+        <span class="kw-pill sm accent">센서 부품 설계</span>
+        <span class="kw-pill sm green">방위산업</span>
+        <span class="kw-pill sm dim">UR3 Manipulator</span>
+        <span class="kw-pill sm dim">Mobile Robot</span>
+        <span class="kw-pill sm accent">불량 분석</span>
+        <span class="kw-pill sm dim">품질 관리 (QC)</span>
+        <span class="kw-pill sm green">메카트로닉스</span>
+        <span class="kw-pill sm dim">시제품 검증</span>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="section-num">05</span><h2 class="section-title">EXPERIENCE</h2><div class="section-line"></div>
+    </div>
+    <div class="exp-list">
+      <div class="exp-item reveal">
+        <div><div class="exp-period">2024 — 현재</div><div class="exp-status">● 재직 중</div></div>
+        <div class="exp-dot"></div>
+        <div>
+          <div class="exp-company">풍산FNS</div>
+          <div class="exp-role">Sensor Mechanical Design Engineer · 기구 설계</div>
+          <div class="exp-desc">방위산업 분야 센서 부품 기구 설계 담당. 정밀 센서 컴포넌트의 설계 도면 작성부터 시제품 검증, 양산 대응까지 전 과정 참여.</div>
+          <ul class="exp-bullets">
+            <li>센서 기구 부품 3D 모델링 및 2D 도면 작성</li>
+            <li>방위산업 품질 기준에 따른 설계 검증 및 시제품 평가</li>
+            <li>양산 공정 연계 설계 개선 및 유관 부서 협업</li>
+          </ul>
+          <div class="exp-tags">
+            <span class="tag accent">기구 설계</span><span class="tag accent">센서 부품</span><span class="tag accent">CAD 모델링</span>
+            <span class="tag">방위산업</span><span class="tag">시제품 검증</span><span class="tag">양산 대응</span>
+          </div>
+        </div>
+      </div>
+      <div class="exp-item reveal">
+        <div><div class="exp-period">2023 — 2024</div></div>
+        <div class="exp-dot dim"></div>
+        <div>
+          <div class="exp-company">로보티즈 (ROBOTIS)</div>
+          <div class="exp-role">Quality Engineer · 품질 관리</div>
+          <div class="exp-desc">로봇 부품 및 모듈의 품질 관리 업무 담당. 불량 분석과 수리·보수를 통해 로봇 제품의 구조적 특성과 고장 메커니즘 심층 이해.</div>
+          <ul class="exp-bullets">
+            <li>다이나믹셀(Dynamixel) 등 로봇 액추에이터 불량 원인 분석</li>
+            <li>현장 품질 이슈 신속 대응 및 수리 업무 수행</li>
+          </ul>
+          <div class="exp-tags">
+            <span class="tag accent">품질 관리 (QC)</span><span class="tag accent">불량 분석</span>
+            <span class="tag blue">로봇 부품</span><span class="tag">수리·보수</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
 <section id="education">
   <div class="section-inner">
     <div class="section-header reveal">
-      <span class="section-num">04</span><h2 class="section-title">EDUCATION</h2><div class="section-line"></div>
+      <span class="section-num">06</span><h2 class="section-title">EDUCATION</h2><div class="section-line"></div>
     </div>
     <div class="edu-grid">
       <div class="edu-card reveal">
@@ -416,92 +491,49 @@
         <div class="edu-major">메카트로닉스공학과</div>
         <div class="edu-detail">Chungnam National University<br>Dept. of Mechatronics Engineering</div>
         <div class="edu-period">~ 2023년 졸업</div>
-        <div class="edu-note">🔬 기계·전자·컴퓨터 융합 공학 전공<br>다물체동역학·로봇공학·스마트제조 연구 수행<br>📄 DBpia 논문 이용수 164 (기계공학 분야)</div>
+        <div class="edu-note">🏆 재학 중 RecurDyn 경진대회 금상 수상<br>다물체 동역학 기반 로봇 연구 수행</div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="skills" style="background: var(--surface);">
+<!-- SKILLS -->
+<section id="skills">
   <div class="section-inner">
     <div class="section-header reveal">
-      <span class="section-num">05</span><h2 class="section-title">SKILLS</h2><div class="section-line"></div>
+      <span class="section-num">07</span><h2 class="section-title">SKILLS</h2><div class="section-line"></div>
     </div>
     <div class="skills-grid">
       <div class="reveal">
-        <div class="skill-group-title">// Design &amp; Engineering</div>
+        <div class="skill-group-title">// Design & Engineering</div>
         <div class="skill-item"><span class="skill-name">기구 설계 (Mechanical Design)</span><div class="skill-bar"><div class="skill-bar-fill" style="width:85%"></div></div></div>
         <div class="skill-item"><span class="skill-name">CAD 3D 모델링</span><div class="skill-bar"><div class="skill-bar-fill" style="width:82%"></div></div></div>
         <div class="skill-item"><span class="skill-name">2D 설계 도면 작성</span><div class="skill-bar"><div class="skill-bar-fill" style="width:80%"></div></div></div>
         <div class="skill-item"><span class="skill-name">시제품 설계 검증</span><div class="skill-bar"><div class="skill-bar-fill" style="width:75%"></div></div></div>
-        <div class="skill-item"><span class="skill-name">공차 분석 (GD&amp;T)</span><div class="skill-bar"><div class="skill-bar-fill" style="width:68%"></div></div></div>
       </div>
       <div class="reveal">
-        <div class="skill-group-title">// Research &amp; Analysis</div>
-        <div class="skill-item"><span class="skill-name">다물체 동역학 해석</span><div class="skill-bar"><div class="skill-bar-fill" style="width:80%"></div></div></div>
-        <div class="skill-item"><span class="skill-name">로봇 기구학 분석</span><div class="skill-bar"><div class="skill-bar-fill" style="width:75%"></div></div></div>
+        <div class="skill-group-title">// Simulation & Analysis</div>
+        <div class="skill-item"><span class="skill-name">RecurDyn (다물체 동역학)</span><div class="skill-bar"><div class="skill-bar-fill" style="width:80%"></div></div></div>
+        <div class="skill-item"><span class="skill-name">CAE 시뮬레이션 해석</span><div class="skill-bar"><div class="skill-bar-fill" style="width:75%"></div></div></div>
         <div class="skill-item"><span class="skill-name">불량 분석 (Defect Analysis)</span><div class="skill-bar"><div class="skill-bar-fill" style="width:85%"></div></div></div>
-        <div class="skill-item"><span class="skill-name">품질 관리 (QC/QA)</span><div class="skill-bar"><div class="skill-bar-fill" style="width:78%"></div></div></div>
-        <div class="skill-item"><span class="skill-name">기술 문서 작성</span><div class="skill-bar"><div class="skill-bar-fill" style="width:75%"></div></div></div>
+        <div class="skill-item"><span class="skill-name">품질 관리 (QC/QA)</span><div class="skill-bar"><div class="skill-bar-fill" style="width:80%"></div></div></div>
       </div>
       <div class="reveal">
         <div class="skill-group-title">// Domain Knowledge</div>
         <div class="skill-item"><span class="skill-name">메카트로닉스 공학</span><div class="skill-bar"><div class="skill-bar-fill" style="width:85%"></div></div></div>
         <div class="skill-item"><span class="skill-name">센서 부품 설계</span><div class="skill-bar"><div class="skill-bar-fill" style="width:80%"></div></div></div>
         <div class="skill-item"><span class="skill-name">방위산업 (Defense)</span><div class="skill-bar"><div class="skill-bar-fill" style="width:75%"></div></div></div>
-        <div class="skill-item"><span class="skill-name">로봇 시스템 이해</span><div class="skill-bar"><div class="skill-bar-fill" style="width:80%"></div></div></div>
-        <div class="skill-item"><span class="skill-name">유체역학 기초</span><div class="skill-bar"><div class="skill-bar-fill" style="width:65%"></div></div></div>
+        <div class="skill-item"><span class="skill-name">로봇 시스템 이해</span><div class="skill-bar"><div class="skill-bar-fill" style="width:78%"></div></div></div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="academic">
+<!-- CONTACT -->
+<section id="contact" style="background:var(--surface);">
   <div class="section-inner">
     <div class="section-header reveal">
-      <span class="section-num">06</span><h2 class="section-title">ACADEMIC</h2><div class="section-line"></div>
-    </div>
-    <div class="academic-grid">
-      <div class="academic-block reveal">
-        <h3>// 전공 교육과정 (충남대 메카트로닉스)</h3>
-        <div class="course-list">
-          <div class="course-item"><span class="course-code">MEC</span><span class="course-name">동역학 · 고체역학 · 기계공작법</span></div>
-          <div class="course-item"><span class="course-code">ELE</span><span class="course-name">전자회로실험 · 디지털회로실험</span></div>
-          <div class="course-item"><span class="course-code">CTR</span><span class="course-name">컴퓨터제어시스템 분석 및 설계</span></div>
-          <div class="course-item"><span class="course-code">ROB</span><span class="course-name">로봇공학 · 스마트제조 · 자율주행</span></div>
-          <div class="course-item"><span class="course-code">DYN</span><span class="course-name">다물체 동역학 (Multibody Dynamics)</span></div>
-          <div class="course-item"><span class="course-code">CAP</span><span class="course-name">Capstone Design (졸업 작품 설계·제작)</span></div>
-        </div>
-      </div>
-      <div class="academic-block reveal">
-        <h3>// 연구 관심 분야 (UST · ADD)</h3>
-        <div class="research-area">
-          <div class="research-item">
-            <div class="research-title">다물체 동역학 & 실시간 해석</div>
-            <div class="research-desc">수중건설로봇, 마사지 로봇 등의 다물체 시스템 동역학 모델링 및 실시간 시뮬레이션 연구 (충남대 재학 중 발표)</div>
-          </div>
-          <div class="research-item">
-            <div class="research-title">방위산업 정밀 기구 설계</div>
-            <div class="research-desc">센서 및 탐지 시스템의 기구 설계 최적화, 방산 규격 적합 설계 방법론 연구</div>
-          </div>
-          <div class="research-item">
-            <div class="research-title">수중 로봇 유체력 해석</div>
-            <div class="research-desc">수중건설로봇의 유체력 효과(Hydro-dynamics effects) 및 접촉력(Contact force) 모델링</div>
-          </div>
-          <div class="research-item">
-            <div class="research-title">국방 기술 연구 (ADD 연계)</div>
-            <div class="research-desc">국방과학연구소 연계 과제 참여, 첨단 방위산업 기술 개발 연구 수행</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="contact" style="background: var(--surface);">
-  <div class="section-inner">
-    <div class="section-header reveal">
-      <span class="section-num">07</span><h2 class="section-title">CONTACT</h2><div class="section-line"></div>
+      <span class="section-num">08</span><h2 class="section-title">CONTACT</h2><div class="section-line"></div>
     </div>
     <div class="contact-wrap">
       <div class="contact-text reveal">
@@ -513,7 +545,7 @@
           <span class="contact-icon">GH</span>github.com/Hongroot98
         </a>
         <a href="https://www.dbpia.co.kr/author/authorDetail?ancId=4967786" target="_blank" class="contact-link">
-          <span class="contact-icon">DB</span>DBpia 저자 페이지 · 논문 목록
+          <span class="contact-icon">DB</span>DBpia 저자 페이지
         </a>
         <a href="mailto:" class="contact-link">
           <span class="contact-icon">@</span>이메일로 연락하기
@@ -528,7 +560,7 @@
 
 <footer>
   <p>© 2026 Roh Hongguen (노홍근) · Mechanical Design Engineer</p>
-  <p>Chungnam National University · UST · ADD &nbsp;|&nbsp; Built with GitHub Pages</p>
+  <p>CNU Mechatronics · UST · ADD &nbsp;|&nbsp; GitHub Pages</p>
 </footer>
 
 <script>
@@ -538,8 +570,8 @@
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
   }, { threshold: 0.08, rootMargin: '0px 0px -50px 0px' });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-  document.querySelectorAll('.about-stats, .edu-grid, .skills-grid').forEach(grid => {
-    grid.querySelectorAll('.reveal').forEach((el, i) => { el.style.transitionDelay = `${i * 0.1}s`; });
+  document.querySelectorAll('.about-stats, .edu-grid, .skills-grid').forEach(g => {
+    g.querySelectorAll('.reveal').forEach((el,i) => { el.style.transitionDelay = `${i*0.1}s`; });
   });
 </script>
 </body>
