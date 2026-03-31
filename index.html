@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>노홍근 | Mechanical Design Engineer</title>
-  <meta name="description" content="노홍근 - 충남대학교 메카트로닉스공학과 졸업, UST 석사과정(국방과학연구소 연계), 기구 설계 엔지니어" />
+  <title>노홍근 (Hong-geun Noh) | Mechanical Design Engineer</title>
+  <meta name="description" content="노홍근 (Hong-geun Noh) - 충남대학교 메카트로닉스공학과, UST 석사과정(국방과학연구소 연계), 기구 설계 엔지니어. 다물체 동역학, 마사지 로봇, 수중건설로봇 연구." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+KR:wght@300;400;500;700&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet" />
@@ -12,7 +12,7 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
       --bg: #0a0a0a; --surface: #111111; --border: #222222;
-      --accent: #c8a97e; --accent2: #4a90a4;
+      --accent: #c8a97e; --accent2: #4a90a4; --accent3: #7ea87e;
       --text: #e8e4dc; --text-dim: #888880; --text-faint: #444440;
       --mono: 'JetBrains Mono', monospace;
       --sans: 'Noto Sans KR', sans-serif;
@@ -22,33 +22,50 @@
     body { background: var(--bg); color: var(--text); font-family: var(--sans); font-weight: 300; line-height: 1.7; overflow-x: hidden; }
     body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events: none; z-index: 999; opacity: .35; }
 
+    /* NAV */
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 3rem; border-bottom: 1px solid transparent; transition: border-color .3s, background .3s; }
     nav.scrolled { background: rgba(10,10,10,.93); border-color: var(--border); backdrop-filter: blur(12px); }
     .nav-logo { font-family: var(--mono); font-size: .8rem; color: var(--accent); letter-spacing: .15em; text-transform: uppercase; }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
-    .nav-links a { font-family: var(--mono); font-size: .68rem; color: var(--text-dim); text-decoration: none; letter-spacing: .12em; text-transform: uppercase; transition: color .2s; }
+    .nav-links { display: flex; gap: 1.8rem; list-style: none; }
+    .nav-links a { font-family: var(--mono); font-size: .65rem; color: var(--text-dim); text-decoration: none; letter-spacing: .12em; text-transform: uppercase; transition: color .2s; }
     .nav-links a:hover { color: var(--accent); }
 
+    /* HERO */
     #hero { min-height: 100vh; display: grid; place-items: center; position: relative; padding: 8rem 3rem 4rem; overflow: hidden; }
     .hero-grid-bg { position: absolute; inset: 0; background-image: linear-gradient(rgba(200,169,126,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(200,169,126,.04) 1px, transparent 1px); background-size: 60px 60px; mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 0%, transparent 100%); }
-    .hero-inner { max-width: 960px; width: 100%; position: relative; }
+    .hero-layout { max-width: 960px; width: 100%; position: relative; display: grid; grid-template-columns: 1fr auto; gap: 4rem; align-items: center; }
     .hero-eyebrow { font-family: var(--mono); font-size: .7rem; color: var(--accent); letter-spacing: .25em; text-transform: uppercase; margin-bottom: 1.5rem; opacity: 0; animation: fadeUp .8s .2s ease forwards; }
-    .hero-name { font-family: var(--display); font-size: clamp(4rem,12vw,10rem); line-height: .9; letter-spacing: .02em; color: var(--text); opacity: 0; animation: fadeUp .8s .4s ease forwards; }
+    .hero-name { font-family: var(--display); font-size: clamp(3.5rem,10vw,8rem); line-height: .9; letter-spacing: .02em; color: var(--text); opacity: 0; animation: fadeUp .8s .4s ease forwards; }
     .hero-name span { color: var(--accent); }
-    .hero-subtitle { font-family: var(--mono); font-size: .82rem; color: var(--text-dim); letter-spacing: .1em; margin-top: 2rem; border-left: 2px solid var(--accent); padding-left: 1rem; opacity: 0; animation: fadeUp .8s .6s ease forwards; }
-    .hero-desc { margin-top: 2rem; max-width: 540px; font-size: .93rem; color: var(--text-dim); line-height: 1.9; opacity: 0; animation: fadeUp .8s .8s ease forwards; }
-    .hero-badges { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.8rem; opacity: 0; animation: fadeUp .8s .9s ease forwards; }
-    .badge { font-family: var(--mono); font-size: .62rem; letter-spacing: .12em; text-transform: uppercase; padding: .3rem .8rem; border: 1px solid var(--accent); color: var(--accent); background: rgba(200,169,126,.07); }
-    .hero-cta { display: flex; gap: 1rem; margin-top: 2.5rem; opacity: 0; animation: fadeUp .8s 1s ease forwards; }
-    .btn { font-family: var(--mono); font-size: .72rem; letter-spacing: .15em; text-transform: uppercase; padding: .75rem 1.75rem; text-decoration: none; border: 1px solid; transition: all .25s; }
+    .hero-name-en { font-family: var(--mono); font-size: .75rem; color: var(--text-faint); letter-spacing: .2em; margin-top: .8rem; opacity: 0; animation: fadeUp .8s .5s ease forwards; }
+    .hero-subtitle { font-family: var(--mono); font-size: .78rem; color: var(--text-dim); letter-spacing: .1em; margin-top: 1.5rem; border-left: 2px solid var(--accent); padding-left: 1rem; opacity: 0; animation: fadeUp .8s .6s ease forwards; }
+    .hero-desc { margin-top: 1.8rem; max-width: 480px; font-size: .9rem; color: var(--text-dim); line-height: 1.9; opacity: 0; animation: fadeUp .8s .8s ease forwards; }
+    .hero-badges { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.5rem; opacity: 0; animation: fadeUp .8s .9s ease forwards; }
+    .badge { font-family: var(--mono); font-size: .58rem; letter-spacing: .1em; text-transform: uppercase; padding: .25rem .7rem; border: 1px solid var(--accent); color: var(--accent); background: rgba(200,169,126,.07); }
+    .badge.blue { border-color: var(--accent2); color: var(--accent2); background: rgba(74,144,164,.07); }
+    .badge.green { border-color: var(--accent3); color: var(--accent3); background: rgba(126,168,126,.07); }
+    .hero-cta { display: flex; gap: 1rem; margin-top: 2rem; opacity: 0; animation: fadeUp .8s 1s ease forwards; }
+    .btn { font-family: var(--mono); font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; padding: .7rem 1.6rem; text-decoration: none; border: 1px solid; transition: all .25s; }
     .btn-primary { background: var(--accent); color: var(--bg); border-color: var(--accent); }
     .btn-primary:hover { background: transparent; color: var(--accent); }
     .btn-secondary { background: transparent; color: var(--text-dim); border-color: var(--border); }
     .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* PROFILE PHOTO */
+    .hero-photo-wrap { opacity: 0; animation: fadeIn 1s .5s ease forwards; flex-shrink: 0; }
+    .hero-photo { width: 220px; height: 280px; border: 1px solid var(--border); position: relative; overflow: hidden; }
+    .hero-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .hero-photo-placeholder { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; background: var(--surface); gap: .8rem; }
+    .hero-photo-placeholder .photo-icon { font-size: 3rem; opacity: .3; }
+    .hero-photo-placeholder p { font-family: var(--mono); font-size: .6rem; color: var(--text-faint); letter-spacing: .15em; text-transform: uppercase; text-align: center; padding: 0 1rem; }
+    .hero-photo::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--accent); }
+    .hero-photo-label { font-family: var(--mono); font-size: .6rem; color: var(--text-faint); letter-spacing: .15em; text-align: center; margin-top: .6rem; text-transform: uppercase; }
+
     .scroll-hint { position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: .5rem; opacity: 0; animation: fadeIn 1s 1.5s ease forwards; }
     .scroll-hint span { font-family: var(--mono); font-size: .6rem; color: var(--text-faint); letter-spacing: .2em; text-transform: uppercase; }
     .scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, var(--accent), transparent); animation: scrollPulse 2s infinite; }
 
+    /* SECTION BASE */
     section { padding: 6rem 3rem; }
     .section-inner { max-width: 960px; margin: 0 auto; }
     .section-header { display: flex; align-items: baseline; gap: 1.5rem; margin-bottom: 4rem; }
@@ -56,11 +73,17 @@
     .section-title { font-family: var(--display); font-size: clamp(2rem,5vw,3.5rem); letter-spacing: .05em; color: var(--text); }
     .section-line { flex: 1; height: 1px; background: var(--border); max-width: 200px; }
 
+    /* ABOUT */
     #about { background: var(--surface); }
     .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; }
     .about-text p { color: var(--text-dim); margin-bottom: 1.2rem; font-size: .93rem; }
     .about-text p strong { color: var(--accent); font-weight: 500; }
     .about-text p em { color: var(--accent2); font-style: normal; }
+    .about-keywords { margin-top: 2rem; }
+    .about-keywords h4 { font-family: var(--mono); font-size: .6rem; color: var(--text-faint); letter-spacing: .2em; text-transform: uppercase; margin-bottom: .8rem; }
+    .keyword-chips { display: flex; flex-wrap: wrap; gap: .4rem; }
+    .keyword-chip { font-family: var(--mono); font-size: .6rem; letter-spacing: .08em; padding: .25rem .65rem; border: 1px solid var(--border); color: var(--text-faint); transition: all .2s; cursor: default; }
+    .keyword-chip:hover { border-color: var(--accent2); color: var(--accent2); }
     .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-content: start; }
     .stat-card { border: 1px solid var(--border); padding: 1.5rem; position: relative; overflow: hidden; transition: border-color .3s; }
     .stat-card:hover { border-color: var(--accent); }
@@ -69,6 +92,7 @@
     .stat-label { font-family: var(--mono); font-size: .62rem; color: var(--text-faint); letter-spacing: .15em; text-transform: uppercase; margin-top: .4rem; }
     .stat-sub { font-size: .73rem; color: var(--text-faint); margin-top: .25rem; }
 
+    /* EXPERIENCE */
     .exp-list { display: flex; flex-direction: column; }
     .exp-item { display: grid; grid-template-columns: 180px 1fr; gap: 3rem; padding: 2.5rem 0; border-bottom: 1px solid var(--border); position: relative; }
     .exp-item::before { content: ''; position: absolute; left: 178px; top: 0; bottom: 0; width: 1px; background: var(--border); }
@@ -88,19 +112,43 @@
     .tag.accent { border-color: var(--accent); color: var(--accent); }
     .tag.blue { border-color: var(--accent2); color: var(--accent2); }
 
-    #education { background: var(--surface); }
+    /* PUBLICATIONS */
+    #publications { background: var(--surface); }
+    .pub-list { display: flex; flex-direction: column; gap: 1.2rem; }
+    .pub-item { border: 1px solid var(--border); padding: 1.5rem 1.8rem; position: relative; transition: border-color .25s; }
+    .pub-item:hover { border-color: var(--accent); }
+    .pub-item::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--accent); opacity: 0; transition: opacity .25s; }
+    .pub-item:hover::before { opacity: 1; }
+    .pub-meta { display: flex; align-items: center; gap: .8rem; margin-bottom: .6rem; flex-wrap: wrap; }
+    .pub-type { font-family: var(--mono); font-size: .58rem; letter-spacing: .15em; text-transform: uppercase; padding: .2rem .6rem; border: 1px solid; }
+    .pub-type.conf { border-color: var(--accent2); color: var(--accent2); }
+    .pub-type.jour { border-color: var(--accent3); color: var(--accent3); }
+    .pub-year { font-family: var(--mono); font-size: .62rem; color: var(--text-faint); letter-spacing: .1em; }
+    .pub-title { font-size: .95rem; color: var(--text); font-weight: 500; line-height: 1.5; margin-bottom: .5rem; }
+    .pub-authors { font-size: .8rem; color: var(--text-dim); margin-bottom: .4rem; }
+    .pub-authors strong { color: var(--accent); font-weight: 500; }
+    .pub-journal { font-size: .78rem; color: var(--text-faint); font-style: italic; margin-bottom: .6rem; }
+    .pub-keywords { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .6rem; }
+    .pub-keyword { font-family: var(--mono); font-size: .58rem; letter-spacing: .08em; padding: .2rem .5rem; border: 1px solid var(--border); color: var(--text-faint); }
+    .pub-link { font-family: var(--mono); font-size: .62rem; color: var(--accent2); text-decoration: none; letter-spacing: .08em; margin-top: .5rem; display: inline-block; transition: opacity .2s; }
+    .pub-link:hover { opacity: .7; }
+    .pub-stats { font-family: var(--mono); font-size: .6rem; color: var(--text-faint); margin-top: .5rem; letter-spacing: .08em; }
+
+    /* EDUCATION */
+    #education { }
     .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
     .edu-card { border: 1px solid var(--border); padding: 2rem 2rem 2rem 2.5rem; position: relative; overflow: hidden; transition: border-color .3s; }
     .edu-card:hover { border-color: var(--accent); }
-    .edu-card::before { content: ''; position: absolute; top: 0; left: 0; width: 0; height: 100%; background: var(--accent); opacity: .07; transition: width .3s; }
-    .edu-card:hover::before { width: 100%; }
+    .edu-card::before { content: ''; position: absolute; top: 0; left: 0; width: 2px; height: 100%; background: var(--accent); opacity: 0; transition: opacity .3s; }
+    .edu-card:hover::before { opacity: 1; }
     .edu-badge { font-family: var(--mono); font-size: .6rem; color: var(--accent); letter-spacing: .2em; text-transform: uppercase; margin-bottom: .8rem; }
-    .edu-school { font-family: var(--display); font-size: 1.5rem; letter-spacing: .04em; line-height: 1.2; margin-bottom: .5rem; position: relative; }
-    .edu-major { font-size: .88rem; color: var(--text); margin-bottom: .3rem; font-weight: 500; position: relative; }
-    .edu-detail { font-size: .78rem; color: var(--text-faint); margin-bottom: .3rem; position: relative; }
-    .edu-period { font-family: var(--mono); font-size: .65rem; color: var(--text-faint); letter-spacing: .1em; margin-top: .5rem; position: relative; }
-    .edu-note { font-size: .78rem; color: var(--accent2); margin-top: .8rem; padding: .5rem .8rem; border-left: 2px solid var(--accent2); background: rgba(74,144,164,.06); position: relative; line-height: 1.7; }
+    .edu-school { font-family: var(--display); font-size: 1.5rem; letter-spacing: .04em; line-height: 1.2; margin-bottom: .5rem; }
+    .edu-major { font-size: .9rem; color: var(--text); margin-bottom: .3rem; font-weight: 500; }
+    .edu-detail { font-size: .78rem; color: var(--text-faint); margin-bottom: .2rem; }
+    .edu-period { font-family: var(--mono); font-size: .65rem; color: var(--text-faint); letter-spacing: .1em; margin-top: .5rem; }
+    .edu-note { font-size: .78rem; color: var(--accent2); margin-top: .8rem; padding: .5rem .8rem; border-left: 2px solid var(--accent2); background: rgba(74,144,164,.06); line-height: 1.7; }
 
+    /* SKILLS */
     .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
     .skill-group-title { font-family: var(--mono); font-size: .65rem; color: var(--accent); letter-spacing: .2em; text-transform: uppercase; margin-bottom: 1.2rem; padding-bottom: .6rem; border-bottom: 1px solid var(--border); }
     .skill-item { display: flex; justify-content: space-between; align-items: center; padding: .5rem 0; border-bottom: 1px solid rgba(255,255,255,.04); }
@@ -108,6 +156,7 @@
     .skill-bar { width: 80px; height: 2px; background: var(--border); position: relative; }
     .skill-bar-fill { position: absolute; top: 0; left: 0; height: 100%; background: var(--accent); }
 
+    /* ACADEMIC */
     #academic { background: var(--surface); }
     .academic-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
     .academic-block h3 { font-family: var(--mono); font-size: .65rem; color: var(--accent); letter-spacing: .2em; text-transform: uppercase; margin-bottom: 1.5rem; padding-bottom: .6rem; border-bottom: 1px solid var(--border); }
@@ -122,14 +171,14 @@
     .research-title { font-size: .88rem; color: var(--text); font-weight: 500; margin-bottom: .3rem; }
     .research-desc { font-size: .78rem; color: var(--text-faint); line-height: 1.7; }
 
-    #contact { }
+    /* CONTACT */
     .contact-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
     .contact-text h3 { font-family: var(--display); font-size: 2.5rem; letter-spacing: .05em; margin-bottom: 1rem; }
     .contact-text p { font-size: .88rem; color: var(--text-dim); line-height: 1.9; }
     .contact-links { display: flex; flex-direction: column; gap: 1rem; }
     .contact-link { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.2rem; border: 1px solid var(--border); text-decoration: none; color: var(--text-dim); font-size: .85rem; transition: all .25s; }
     .contact-link:hover { border-color: var(--accent); color: var(--accent); }
-    .contact-icon { font-family: var(--mono); font-size: .68rem; color: var(--accent); width: 24px; text-align: center; flex-shrink: 0; }
+    .contact-icon { font-family: var(--mono); font-size: .68rem; color: var(--accent); width: 28px; text-align: center; flex-shrink: 0; }
 
     footer { padding: 2rem 3rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
     footer p { font-family: var(--mono); font-size: .63rem; color: var(--text-faint); letter-spacing: .1em; }
@@ -140,6 +189,10 @@
     .reveal { opacity: 0; transform: translateY(30px); transition: opacity .7s ease, transform .7s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
+    @media (max-width: 900px) {
+      .hero-layout { grid-template-columns: 1fr; }
+      .hero-photo-wrap { display: none; }
+    }
     @media (max-width: 768px) {
       nav { padding: 1rem 1.5rem; } .nav-links { display: none; }
       section { padding: 4rem 1.5rem; }
@@ -157,6 +210,7 @@
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#experience">Experience</a></li>
+    <li><a href="#publications">Publications</a></li>
     <li><a href="#education">Education</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#academic">Research</a></li>
@@ -166,22 +220,37 @@
 
 <section id="hero">
   <div class="hero-grid-bg"></div>
-  <div class="hero-inner">
-    <p class="hero-eyebrow">// Mechanical Design Engineer · Defense &amp; Sensor Systems</p>
-    <h1 class="hero-name">ROH<br><span>HONG</span><br>GUEN</h1>
-    <p class="hero-subtitle">노홍근 &nbsp;·&nbsp; 기구 설계 엔지니어 &nbsp;·&nbsp; 충남대 메카트로닉스 &nbsp;·&nbsp; UST 석사과정</p>
-    <p class="hero-desc">기계공학과 전자공학의 경계를 넘나드는 메카트로닉스 엔지니어. 방위산업 센서 부품 설계 실무와 품질 분석 경험을 바탕으로, 국방과학연구소(ADD) 연계 UST 석사과정에서 연구를 병행하고 있습니다.</p>
-    <div class="hero-badges">
-      <span class="badge">기구 설계</span>
-      <span class="badge">센서 부품</span>
-      <span class="badge">방위산업</span>
-      <span class="badge">UST 석사과정</span>
-      <span class="badge">ADD 연계</span>
-      <span class="badge">메카트로닉스</span>
+  <div class="hero-layout">
+    <div>
+      <p class="hero-eyebrow">// Mechanical Design Engineer · Defense &amp; Sensor Systems</p>
+      <h1 class="hero-name">ROH<br><span>HONG</span><br>GUEN</h1>
+      <p class="hero-name-en">Hong-geun Noh (노홍근)</p>
+      <p class="hero-subtitle">충남대 메카트로닉스공학과 &nbsp;·&nbsp; UST 석사과정 &nbsp;·&nbsp; ADD 연계</p>
+      <p class="hero-desc">기계공학과 전자공학의 경계를 넘나드는 메카트로닉스 엔지니어. 다물체 동역학, 로봇 기구학, 방위산업 센서 설계 분야 연구 및 실무 경험을 보유하고 있습니다.</p>
+      <div class="hero-badges">
+        <span class="badge">기구 설계</span>
+        <span class="badge">센서 부품</span>
+        <span class="badge">방위산업</span>
+        <span class="badge blue">다물체 동역학</span>
+        <span class="badge blue">로봇 기구학</span>
+        <span class="badge green">UST 석사과정</span>
+        <span class="badge green">ADD 연계</span>
+      </div>
+      <div class="hero-cta">
+        <a href="#publications" class="btn btn-primary">논문 보기</a>
+        <a href="#contact" class="btn btn-secondary">연락하기</a>
+      </div>
     </div>
-    <div class="hero-cta">
-      <a href="#experience" class="btn btn-primary">경력 보기</a>
-      <a href="#contact" class="btn btn-secondary">연락하기</a>
+    <div class="hero-photo-wrap">
+      <div class="hero-photo">
+        <!-- 사진을 추가하려면 이 img 태그의 src를 변경하세요 -->
+        <!-- <img src="photo.jpg" alt="노홍근 프로필 사진" /> -->
+        <div class="hero-photo-placeholder">
+          <span class="photo-icon">👤</span>
+          <p>사진을<br>추가하세요</p>
+        </div>
+      </div>
+      <p class="hero-photo-label">Roh Hong-geun · 노홍근</p>
     </div>
   </div>
   <div class="scroll-hint"><span>Scroll</span><div class="scroll-line"></div></div>
@@ -194,14 +263,24 @@
     </div>
     <div class="about-grid">
       <div class="about-text reveal">
-        <p>충남대학교 <strong>메카트로닉스공학과</strong>에서 기계·전자·컴퓨터 융합 공학을 전공했습니다. 동역학, 고체역학, 전자회로, 컴퓨터제어시스템 등 이론과 실습을 겸비한 교육과정을 이수하며 <em>Capstone Design</em> 프로젝트를 통해 현장 설계 역량을 키웠습니다.</p>
+        <p>충남대학교 <strong>메카트로닉스공학과</strong>에서 기계·전자·컴퓨터 융합 공학을 전공했습니다. 재학 중 <strong>다물체 동역학(Multibody Dynamics)</strong>, <strong>마사지 로봇</strong>, <strong>수중건설로봇</strong> 등의 분야에서 연구 활동을 수행하며 학술 논문을 발표했습니다.</p>
         <p>첫 직장인 <strong>로보티즈(ROBOTIS)</strong>에서 로봇 부품 품질 관리 및 불량 분석 업무를 통해 제품 구조에 대한 깊은 이해를 쌓은 뒤, <strong>풍산FNS</strong>로 이직해 센서 기구 설계 직무로 전환했습니다.</p>
         <p>현재는 <strong>국방과학연구소(ADD)</strong>와 연계된 UST 석사과정에서 연구를 병행하며, 방위산업·첨단 기계 설계 분야의 심화 역량을 쌓아가고 있습니다.</p>
-        <p>실무와 연구를 동시에 경험하며 <strong>문제 해결 중심</strong>의 엔지니어링 사고를 지속적으로 발전시키고 있습니다.</p>
+        <div class="about-keywords">
+          <h4>// 연구 키워드 (DBpia 등록)</h4>
+          <div class="keyword-chips">
+            <span class="keyword-chip">다물체 동역학 (Multibody dynamics)</span>
+            <span class="keyword-chip">마사지 로봇 (Massage robot)</span>
+            <span class="keyword-chip">수중건설로봇 (Under-water construction robot)</span>
+            <span class="keyword-chip">실시간 해석 (Real-time analysis)</span>
+            <span class="keyword-chip">유체력 효과 (Hydro-dynamics effects)</span>
+            <span class="keyword-chip">접촉력 (Contact force)</span>
+          </div>
+        </div>
       </div>
       <div class="about-stats reveal">
         <div class="stat-card"><div class="stat-num">3+</div><div class="stat-label">Years Experience</div><div class="stat-sub">2023년 ~ 현재</div></div>
-        <div class="stat-card"><div class="stat-num">2</div><div class="stat-label">Industries</div><div class="stat-sub">로봇 · 방위산업</div></div>
+        <div class="stat-card"><div class="stat-num">164</div><div class="stat-label">논문 이용수</div><div class="stat-sub">DBpia 기준</div></div>
         <div class="stat-card"><div class="stat-num">ADD</div><div class="stat-label">현 소속 연구기관</div><div class="stat-sub">국방과학연구소</div></div>
         <div class="stat-card"><div class="stat-num">UST</div><div class="stat-label">석사과정 재학</div><div class="stat-sub">과학기술연합대학원</div></div>
       </div>
@@ -230,7 +309,7 @@
           </ul>
           <div class="exp-tags">
             <span class="tag accent">기구 설계</span><span class="tag accent">센서 부품</span><span class="tag accent">CAD 모델링</span>
-            <span class="tag">방위산업</span><span class="tag">2D 도면</span><span class="tag">시제품 검증</span><span class="tag">양산 대응</span>
+            <span class="tag">방위산업</span><span class="tag">2D 도면</span><span class="tag">시제품 검증</span>
           </div>
         </div>
       </div>
@@ -240,16 +319,15 @@
         <div>
           <div class="exp-company">로보티즈 (ROBOTIS)</div>
           <div class="exp-role">Quality Engineer · 품질 관리</div>
-          <div class="exp-desc">로봇 부품 및 모듈의 품질 관리 업무 담당. 불량 분석과 수리·보수를 통해 로봇 제품의 구조적 특성과 고장 메커니즘을 심층 이해.</div>
+          <div class="exp-desc">로봇 부품 및 모듈의 품질 관리 업무 담당. 불량 분석(Defect Analysis)과 수리·보수를 통해 로봇 제품의 구조적 특성과 고장 메커니즘을 심층 이해.</div>
           <ul class="exp-bullets">
             <li>다이나믹셀(Dynamixel) 등 로봇 액추에이터 불량 원인 분석</li>
             <li>현장 품질 이슈 신속 대응 및 수리 업무 수행</li>
             <li>불량 유형 분류 및 통계 관리를 통한 품질 개선 기여</li>
-            <li>제품 구조 이해 기반 검사 기준 수립 지원</li>
           </ul>
           <div class="exp-tags">
             <span class="tag accent">품질 관리 (QC)</span><span class="tag accent">불량 분석</span>
-            <span class="tag blue">로봇 부품</span><span class="tag">수리·보수</span><span class="tag">검사 기준</span>
+            <span class="tag blue">로봇 부품</span><span class="tag">수리·보수</span>
           </div>
         </div>
       </div>
@@ -257,10 +335,71 @@
   </div>
 </section>
 
+<!-- PUBLICATIONS -->
+<section id="publications">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="section-num">03</span><h2 class="section-title">PUBLICATIONS</h2><div class="section-line"></div>
+    </div>
+    <div class="pub-list">
+
+      <div class="pub-item reveal">
+        <div class="pub-meta">
+          <span class="pub-type conf">Conference</span>
+          <span class="pub-year">2024</span>
+        </div>
+        <div class="pub-title">수중건설로봇의 다물체 동역학 실시간 해석을 위한 유체력 효과 모델링</div>
+        <div class="pub-authors"><strong>노홍근</strong> 외 공저자</div>
+        <div class="pub-journal">충남대학교 메카트로닉스공학과 · 한국 학술대회 발표</div>
+        <div class="pub-keywords">
+          <span class="pub-keyword">수중건설로봇</span>
+          <span class="pub-keyword">다물체 동역학</span>
+          <span class="pub-keyword">실시간 해석</span>
+          <span class="pub-keyword">유체력 효과</span>
+        </div>
+        <a href="https://www.dbpia.co.kr/author/authorDetail?ancId=4967786" target="_blank" class="pub-link">→ DBpia 저자 페이지</a>
+        <div class="pub-stats">총 이용수 164 · DBpia 등록 논문</div>
+      </div>
+
+      <div class="pub-item reveal">
+        <div class="pub-meta">
+          <span class="pub-type conf">Conference</span>
+          <span class="pub-year">2023 — 2024</span>
+        </div>
+        <div class="pub-title">마사지 로봇의 접촉력 기반 다물체 동역학 해석</div>
+        <div class="pub-authors"><strong>노홍근</strong> 외 공저자</div>
+        <div class="pub-journal">충남대학교 메카트로닉스공학과 · 학술대회 발표</div>
+        <div class="pub-keywords">
+          <span class="pub-keyword">마사지 로봇</span>
+          <span class="pub-keyword">접촉력</span>
+          <span class="pub-keyword">다물체 동역학</span>
+        </div>
+        <a href="https://www.dbpia.co.kr/author/authorDetail?ancId=4967786" target="_blank" class="pub-link">→ DBpia 저자 페이지</a>
+        <div class="pub-stats">공학 > 기계공학 > 기계공학 일반</div>
+      </div>
+
+      <div class="pub-item reveal" style="border-style: dashed; opacity: .7;">
+        <div class="pub-meta">
+          <span class="pub-type conf">더 많은 논문</span>
+        </div>
+        <div class="pub-title">전체 논문 목록은 DBpia 저자 페이지에서 확인하세요</div>
+        <div class="pub-authors">노홍근 (Hong-geun Noh) · 충남대학교 메카트로닉스공학과</div>
+        <div class="pub-keywords">
+          <span class="pub-keyword">소속: 충남대학교</span>
+          <span class="pub-keyword">분야: 기계공학</span>
+          <span class="pub-keyword">이용수: 164</span>
+        </div>
+        <a href="https://www.dbpia.co.kr/author/authorDetail?ancId=4967786" target="_blank" class="pub-link">→ DBpia 전체 논문 목록 보기</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <section id="education">
   <div class="section-inner">
     <div class="section-header reveal">
-      <span class="section-num">03</span><h2 class="section-title">EDUCATION</h2><div class="section-line"></div>
+      <span class="section-num">04</span><h2 class="section-title">EDUCATION</h2><div class="section-line"></div>
     </div>
     <div class="edu-grid">
       <div class="edu-card reveal">
@@ -277,16 +416,16 @@
         <div class="edu-major">메카트로닉스공학과</div>
         <div class="edu-detail">Chungnam National University<br>Dept. of Mechatronics Engineering</div>
         <div class="edu-period">~ 2023년 졸업</div>
-        <div class="edu-note">🔬 기계·전자·컴퓨터 융합 공학 전공<br>로봇, 스마트제조, 자율주행, AI 분야 교육 이수</div>
+        <div class="edu-note">🔬 기계·전자·컴퓨터 융합 공학 전공<br>다물체동역학·로봇공학·스마트제조 연구 수행<br>📄 DBpia 논문 이용수 164 (기계공학 분야)</div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="skills">
+<section id="skills" style="background: var(--surface);">
   <div class="section-inner">
     <div class="section-header reveal">
-      <span class="section-num">04</span><h2 class="section-title">SKILLS</h2><div class="section-line"></div>
+      <span class="section-num">05</span><h2 class="section-title">SKILLS</h2><div class="section-line"></div>
     </div>
     <div class="skills-grid">
       <div class="reveal">
@@ -298,11 +437,11 @@
         <div class="skill-item"><span class="skill-name">공차 분석 (GD&amp;T)</span><div class="skill-bar"><div class="skill-bar-fill" style="width:68%"></div></div></div>
       </div>
       <div class="reveal">
-        <div class="skill-group-title">// Quality &amp; Analysis</div>
+        <div class="skill-group-title">// Research &amp; Analysis</div>
+        <div class="skill-item"><span class="skill-name">다물체 동역학 해석</span><div class="skill-bar"><div class="skill-bar-fill" style="width:80%"></div></div></div>
+        <div class="skill-item"><span class="skill-name">로봇 기구학 분석</span><div class="skill-bar"><div class="skill-bar-fill" style="width:75%"></div></div></div>
         <div class="skill-item"><span class="skill-name">불량 분석 (Defect Analysis)</span><div class="skill-bar"><div class="skill-bar-fill" style="width:85%"></div></div></div>
-        <div class="skill-item"><span class="skill-name">품질 관리 (QC/QA)</span><div class="skill-bar"><div class="skill-bar-fill" style="width:80%"></div></div></div>
-        <div class="skill-item"><span class="skill-name">공정 분석</span><div class="skill-bar"><div class="skill-bar-fill" style="width:70%"></div></div></div>
-        <div class="skill-item"><span class="skill-name">검사 기준 수립</span><div class="skill-bar"><div class="skill-bar-fill" style="width:72%"></div></div></div>
+        <div class="skill-item"><span class="skill-name">품질 관리 (QC/QA)</span><div class="skill-bar"><div class="skill-bar-fill" style="width:78%"></div></div></div>
         <div class="skill-item"><span class="skill-name">기술 문서 작성</span><div class="skill-bar"><div class="skill-bar-fill" style="width:75%"></div></div></div>
       </div>
       <div class="reveal">
@@ -310,8 +449,8 @@
         <div class="skill-item"><span class="skill-name">메카트로닉스 공학</span><div class="skill-bar"><div class="skill-bar-fill" style="width:85%"></div></div></div>
         <div class="skill-item"><span class="skill-name">센서 부품 설계</span><div class="skill-bar"><div class="skill-bar-fill" style="width:80%"></div></div></div>
         <div class="skill-item"><span class="skill-name">방위산업 (Defense)</span><div class="skill-bar"><div class="skill-bar-fill" style="width:75%"></div></div></div>
-        <div class="skill-item"><span class="skill-name">로봇 시스템 이해</span><div class="skill-bar"><div class="skill-bar-fill" style="width:72%"></div></div></div>
-        <div class="skill-item"><span class="skill-name">전자회로 기초</span><div class="skill-bar"><div class="skill-bar-fill" style="width:65%"></div></div></div>
+        <div class="skill-item"><span class="skill-name">로봇 시스템 이해</span><div class="skill-bar"><div class="skill-bar-fill" style="width:80%"></div></div></div>
+        <div class="skill-item"><span class="skill-name">유체역학 기초</span><div class="skill-bar"><div class="skill-bar-fill" style="width:65%"></div></div></div>
       </div>
     </div>
   </div>
@@ -320,7 +459,7 @@
 <section id="academic">
   <div class="section-inner">
     <div class="section-header reveal">
-      <span class="section-num">05</span><h2 class="section-title">ACADEMIC</h2><div class="section-line"></div>
+      <span class="section-num">06</span><h2 class="section-title">ACADEMIC</h2><div class="section-line"></div>
     </div>
     <div class="academic-grid">
       <div class="academic-block reveal">
@@ -330,36 +469,51 @@
           <div class="course-item"><span class="course-code">ELE</span><span class="course-name">전자회로실험 · 디지털회로실험</span></div>
           <div class="course-item"><span class="course-code">CTR</span><span class="course-name">컴퓨터제어시스템 분석 및 설계</span></div>
           <div class="course-item"><span class="course-code">ROB</span><span class="course-name">로봇공학 · 스마트제조 · 자율주행</span></div>
-          <div class="course-item"><span class="course-code">AI</span><span class="course-name">인공지능 응용 · 융합시스템 설계</span></div>
+          <div class="course-item"><span class="course-code">DYN</span><span class="course-name">다물체 동역학 (Multibody Dynamics)</span></div>
           <div class="course-item"><span class="course-code">CAP</span><span class="course-name">Capstone Design (졸업 작품 설계·제작)</span></div>
         </div>
       </div>
       <div class="academic-block reveal">
         <h3>// 연구 관심 분야 (UST · ADD)</h3>
         <div class="research-area">
-          <div class="research-item"><div class="research-title">방위산업 정밀 기구 설계</div><div class="research-desc">센서 및 탐지 시스템의 기구 설계 최적화, 방산 규격 적합 설계 방법론 연구</div></div>
-          <div class="research-item"><div class="research-title">메카트로닉스 시스템 통합</div><div class="research-desc">기계-전자-소프트웨어 통합 설계, 스마트 센서 시스템 구현 연구</div></div>
-          <div class="research-item"><div class="research-title">국방 기술 연구 (ADD 연계)</div><div class="research-desc">국방과학연구소 연계 과제 참여, 첨단 방위산업 기술 개발 연구 수행</div></div>
-          <div class="research-item"><div class="research-title">설계 최적화 및 경량화</div><div class="research-desc">방산 부품의 경량화 설계, 구조 해석 및 성능 최적화 연구</div></div>
+          <div class="research-item">
+            <div class="research-title">다물체 동역학 & 실시간 해석</div>
+            <div class="research-desc">수중건설로봇, 마사지 로봇 등의 다물체 시스템 동역학 모델링 및 실시간 시뮬레이션 연구 (충남대 재학 중 발표)</div>
+          </div>
+          <div class="research-item">
+            <div class="research-title">방위산업 정밀 기구 설계</div>
+            <div class="research-desc">센서 및 탐지 시스템의 기구 설계 최적화, 방산 규격 적합 설계 방법론 연구</div>
+          </div>
+          <div class="research-item">
+            <div class="research-title">수중 로봇 유체력 해석</div>
+            <div class="research-desc">수중건설로봇의 유체력 효과(Hydro-dynamics effects) 및 접촉력(Contact force) 모델링</div>
+          </div>
+          <div class="research-item">
+            <div class="research-title">국방 기술 연구 (ADD 연계)</div>
+            <div class="research-desc">국방과학연구소 연계 과제 참여, 첨단 방위산업 기술 개발 연구 수행</div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="contact">
+<section id="contact" style="background: var(--surface);">
   <div class="section-inner">
     <div class="section-header reveal">
-      <span class="section-num">06</span><h2 class="section-title">CONTACT</h2><div class="section-line"></div>
+      <span class="section-num">07</span><h2 class="section-title">CONTACT</h2><div class="section-line"></div>
     </div>
     <div class="contact-wrap">
       <div class="contact-text reveal">
         <h3>GET IN<br>TOUCH</h3>
-        <p>협업, 연구 교류, 또는 커리어 관련 이야기라면 언제든 편하게 연락 주세요.<br><br>현재 UST 석사과정 재학 및 국방과학연구소에서 연구를 병행하고 있으며, 방위산업 기구 설계 분야에 깊은 관심을 가지고 있습니다.</p>
+        <p>협업, 연구 교류, 또는 커리어 관련 이야기라면 언제든 편하게 연락 주세요.<br><br>현재 UST 석사과정 재학 및 국방과학연구소에서 연구를 병행하고 있으며, 방위산업 기구 설계 및 다물체 동역학 분야에 깊은 관심을 가지고 있습니다.</p>
       </div>
       <div class="contact-links reveal">
         <a href="https://github.com/Hongroot98" target="_blank" class="contact-link">
           <span class="contact-icon">GH</span>github.com/Hongroot98
+        </a>
+        <a href="https://www.dbpia.co.kr/author/authorDetail?ancId=4967786" target="_blank" class="contact-link">
+          <span class="contact-icon">DB</span>DBpia 저자 페이지 · 논문 목록
         </a>
         <a href="mailto:" class="contact-link">
           <span class="contact-icon">@</span>이메일로 연락하기
@@ -373,7 +527,7 @@
 </section>
 
 <footer>
-  <p>© 2026 Roh Hongguen · Mechanical Design Engineer</p>
+  <p>© 2026 Roh Hongguen (노홍근) · Mechanical Design Engineer</p>
   <p>Chungnam National University · UST · ADD &nbsp;|&nbsp; Built with GitHub Pages</p>
 </footer>
 
