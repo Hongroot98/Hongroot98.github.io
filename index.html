@@ -4,24 +4,24 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>노홍근 | Mechanical Design Engineer</title>
-  <meta name="description" content="노홍근(Hong-geun Noh) - 충남대학교 메카트로닉스공학과, UST 석사과정(국방과학연구소 연계), 기구 설계 엔지니어" />
+  <meta name="description" content="노홍근(Noh Hong Geun) - 충남대학교 메카트로닉스공학과, UST 석사과정(국방과학연구소 연계), 기구 설계 엔지니어" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+KR:wght@300;400;500;700&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet" />
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    :root{--bg:#0a0a0a;--surface:#111111;--border:#222222;--accent:#c8a97e;--accent2:#4a90a4;--text:#e8e4dc;--text-dim:#888880;--text-faint:#444440;--mono:'JetBrains Mono',monospace;--sans:'Noto Sans KR',sans-serif;--display:'Bebas Neue',sans-serif}
+    :root{--bg:#f7f5f2;--surface:#ffffff;--border:#e0dbd4;--accent:#8b6840;--accent2:#2d7a9a;--text:#1a1714;--text-dim:#5a5550;--text-faint:#9a948e;--mono:'JetBrains Mono',monospace;--sans:'Noto Sans KR',sans-serif;--display:'Bebas Neue',sans-serif}
     html{scroll-behavior:smooth}
     body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:300;line-height:1.7;overflow-x:hidden}
-    body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:999;opacity:.35}
+    body::before{display:none}
     nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 3rem;border-bottom:1px solid transparent;transition:border-color .3s,background .3s}
-    nav.scrolled{background:rgba(10,10,10,.93);border-color:var(--border);backdrop-filter:blur(12px)}
+    nav.scrolled{background:rgba(247,245,242,.95);border-color:var(--border);backdrop-filter:blur(12px)}
     .nav-logo{font-family:var(--mono);font-size:.8rem;color:var(--accent);letter-spacing:.15em;text-transform:uppercase}
     .nav-links{display:flex;gap:1.8rem;list-style:none}
     .nav-links a{font-family:var(--mono);font-size:.65rem;color:var(--text-dim);text-decoration:none;letter-spacing:.12em;text-transform:uppercase;transition:color .2s}
     .nav-links a:hover{color:var(--accent)}
     #hero{min-height:100vh;display:grid;place-items:center;position:relative;padding:8rem 3rem 4rem;overflow:hidden}
-    .hero-grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(200,169,126,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(200,169,126,.04) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 0%,transparent 100%)}
+    .hero-grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(139,104,64,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(139,104,64,.06) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 0%,transparent 100%)}
     .hero-inner{max-width:960px;width:100%;position:relative;display:grid;grid-template-columns:1fr auto;gap:4rem;align-items:center}
     .hero-eyebrow{font-family:var(--mono);font-size:.7rem;color:var(--accent);letter-spacing:.25em;text-transform:uppercase;margin-bottom:1.5rem;opacity:0;animation:fadeUp .8s .2s ease forwards}
     .hero-name{font-family:var(--display);font-size:clamp(4rem,10vw,9rem);line-height:.9;letter-spacing:.02em;color:var(--text);opacity:0;animation:fadeUp .8s .4s ease forwards}
@@ -29,7 +29,7 @@
     .hero-subtitle{font-family:var(--mono);font-size:.8rem;color:var(--text-dim);letter-spacing:.1em;margin-top:2rem;border-left:2px solid var(--accent);padding-left:1rem;opacity:0;animation:fadeUp .8s .6s ease forwards}
     .hero-desc{margin-top:2rem;max-width:500px;font-size:.9rem;color:var(--text-dim);line-height:1.9;opacity:0;animation:fadeUp .8s .8s ease forwards}
     .hero-badges{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.5rem;opacity:0;animation:fadeUp .8s .9s ease forwards}
-    .badge{font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;padding:.25rem .7rem;border:1px solid var(--accent);color:var(--accent);background:rgba(200,169,126,.07)}
+    .badge{font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;padding:.25rem .7rem;border:1px solid var(--accent);color:var(--accent);background:rgba(139,104,64,.08)}
     .hero-cta{display:flex;gap:1rem;margin-top:2rem;opacity:0;animation:fadeUp .8s 1s ease forwards}
     .btn{font-family:var(--mono);font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;padding:.7rem 1.6rem;text-decoration:none;border:1px solid;transition:all .25s}
     .btn-primary{background:var(--accent);color:var(--bg);border-color:var(--accent)}
@@ -37,8 +37,8 @@
     .btn-secondary{background:transparent;color:var(--text-dim);border-color:var(--border)}
     .btn-secondary:hover{border-color:var(--accent);color:var(--accent)}
     .hero-photo{opacity:0;animation:fadeIn 1s .5s ease forwards;flex-shrink:0}
-    .photo-frame{width:220px;height:280px;position:relative;border:1px solid var(--border);overflow:hidden}
-    .photo-frame::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(200,169,126,.15),transparent 60%);z-index:1;pointer-events:none}
+    .photo-frame{width:220px;height:280px;position:relative;border:1px solid var(--border);overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.12)}
+    .photo-frame::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(139,104,64,.12),transparent 60%);z-index:1;pointer-events:none}
     .photo-frame::after{content:'';position:absolute;bottom:0;right:0;width:40px;height:40px;border-top:1px solid var(--accent);border-left:1px solid var(--accent);z-index:2}
     .photo-frame img{width:100%;height:100%;object-fit:cover;display:block}
     .photo-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--surface);gap:.8rem}
@@ -146,7 +146,7 @@
 </head>
 <body>
 <nav id="nav">
-  <div class="nav-logo">Roh · Hongguen</div>
+  <div class="nav-logo">Noh Hong Geun</div>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#publications">Publications</a></li>
@@ -162,7 +162,7 @@
   <div class="hero-grid-bg"></div>
   <div class="hero-inner">
     <div class="hero-left">
-      <p class="hero-eyebrow">// Mechanical Design Engineer · 노홍근 (Hong-geun Noh)</p>
+      <p class="hero-eyebrow">// Mechanical Design Engineer · 노홍근 (Noh Hong Geun)</p>
       <h1 class="hero-name">ROH<br><span>HONG</span><br>GUEN</h1>
       <p class="hero-subtitle">충남대학교 메카트로닉스공학과 &nbsp;·&nbsp; UST 석사과정 &nbsp;·&nbsp; ADD 연계</p>
       <p class="hero-desc">방위산업 센서 부품 기구 설계 실무와 로봇공학 연구를 병행하는 메카트로닉스 엔지니어. 다물체 동역학, 수중건설로봇, 마사지 로봇 등 복합 시스템 연구 경험을 보유하며, 국방과학연구소(ADD) 연계 UST 석사과정에서 연구를 이어가고 있습니다.</p>
@@ -181,9 +181,9 @@
     </div>
     <div class="hero-photo">
       <div class="photo-frame">
-        <img src="profile.jpg" alt="노홍근 프로필 사진" style="width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(15%);" />
+        <img src="profile.jpg" alt="노홍근 프로필 사진" style="width:100%;height:100%;object-fit:cover;display:block;filter:none;" />
       </div>
-      <div class="photo-tag">// Mechanical Engineer · Researcher</div>
+      <div class="photo-tag">// Noh Hong Geun · Researcher</div>
     </div>
   </div>
   <div class="scroll-hint"><span>Scroll</span><div class="scroll-line"></div></div>
@@ -222,7 +222,7 @@
           <span class="pub-journal">한국통신학회 학술대회논문집</span>
         </div>
         <div class="pub-title">수중건설로봇의 유체력 효과를 고려한 다물체 동역학 실시간 해석</div>
-        <div class="pub-authors"><strong>노홍근 (Hong-geun Noh)</strong> 외 · 충남대학교 메카트로닉스공학과</div>
+        <div class="pub-authors"><strong>노홍근 (Noh Hong Geun)</strong> 외 · 충남대학교 메카트로닉스공학과</div>
         <div class="pub-keywords">
           <span class="kw">수중건설로봇</span>
           <span class="kw">다물체 동역학</span>
@@ -241,7 +241,7 @@
           <span class="pub-journal">충남대학교 학술대회</span>
         </div>
         <div class="pub-title">마사지 로봇의 접촉력 기반 다물체 동역학 모델링</div>
-        <div class="pub-authors"><strong>노홍근 (Hong-geun Noh)</strong> 외 · 충남대학교 메카트로닉스공학과</div>
+        <div class="pub-authors"><strong>노홍근 (Noh Hong Geun)</strong> 외 · 충남대학교 메카트로닉스공학과</div>
         <div class="pub-keywords">
           <span class="kw">마사지 로봇</span>
           <span class="kw">접촉력 (Contact Force)</span>
@@ -252,7 +252,7 @@
     </div>
     <div style="margin-top:2rem;padding:1rem 1.2rem;border:1px solid var(--border);border-left:2px solid var(--accent2);" class="reveal">
       <p style="font-family:var(--mono);font-size:.65rem;color:var(--text-faint);letter-spacing:.1em;">
-        📌 DBpia 저자: <a href="https://www.dbpia.co.kr/author/authorDetail?ancId=4967786" target="_blank" style="color:var(--accent2);">노홍근 (Hong-geun Noh)</a> &nbsp;·&nbsp; 소속: 충남대학교 메카트로닉스공학과 &nbsp;·&nbsp; 분야: 공학 > 기계공학
+        📌 DBpia 저자: <a href="https://www.dbpia.co.kr/author/authorDetail?ancId=4967786" target="_blank" style="color:var(--accent2);">노홍근 (Noh Hong Geun)</a> &nbsp;·&nbsp; 소속: 충남대학교 메카트로닉스공학과 &nbsp;·&nbsp; 분야: 공학 > 기계공학
       </p>
     </div>
   </div>
@@ -281,7 +281,7 @@
           <div class="award-team">팀원: 조재범, <strong>노홍근</strong>, 정형진 &nbsp;|&nbsp; 지도교수: 김성수</div>
           <div class="award-photo-wrap">
             <img src="award_recurdyn.png" alt="2021 RecurDyn 경진대회 수상 사진" class="award-photo" />
-            <div class="award-photo-caption">▲ 수상 후 기념 촬영 (왼쪽에서 세 번째가 노홍근)</div>
+            <div class="award-photo-caption">▲ 2021 RecurDyn 경진대회 금상 수상 기념 촬영 (왼쪽에서 세 번째, 노홍근)</div>
           </div>
         </div>
       </div>
@@ -466,7 +466,7 @@
 </section>
 
 <footer>
-  <p>© 2026 Roh Hongguen (노홍근) · Mechanical Design Engineer</p>
+  <p>© 2026 Noh Hong Geun (노홍근) · Mechanical Design Engineer</p>
   <p>Chungnam National University · UST · ADD &nbsp;|&nbsp; Built with GitHub Pages</p>
 </footer>
 
