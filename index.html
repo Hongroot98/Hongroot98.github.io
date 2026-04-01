@@ -582,11 +582,7 @@
     
 
 
-    /* ── STEALTH SCENE ── */
-    .stealth-scene{
-      position:absolute;inset:0;pointer-events:none;overflow:hidden;
-      z-index:1;
-    }
+    
     /* 원근 격자 — 하단 전체 폭 */
     .ss-grid{
       position:absolute;bottom:0;left:0;right:0;
@@ -621,6 +617,23 @@
     #hero .hero-bg-line{z-index:0}
     #hero .hero-inner{z-index:10}
     #hero .scroll-hint{z-index:10}
+
+
+    /* ── STEALTH SCENE ── */
+    .stealth-scene{
+      position:absolute;
+      bottom:0;left:0;right:0;        /* 하단에 앵커 */
+      height:42%;                      /* Hero 높이의 하단 42% */
+      pointer-events:none;
+      overflow:hidden;
+      z-index:2;                       /* hero-inner(z:10)보다 아래 */
+    }
+    .ss-main{
+      position:absolute;
+      bottom:0;left:0;right:0;
+      width:100%;height:100%;
+      display:block;
+    }
 
     @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
     @keyframes fadeIn{from{opacity:0}to{opacity:1}}
@@ -666,201 +679,256 @@
   <div class="hero-bg-accent"></div>
   <div class="hero-bg-line"></div>
 
-  <!-- ═══ STEALTH SCENE (hero background) ═══ -->
+  
+
+  <!-- ═══ STEALTH SCENE ═══ -->
   <div class="stealth-scene" aria-hidden="true">
 
-    <!-- 원거리 격자 지평선 -->
-    <svg class="ss-grid" viewBox="0 0 1400 260" preserveAspectRatio="xMidYMax meet" xmlns="http://www.w3.org/2000/svg">
+    <!-- ① 원근 격자 + B-2 통합 SVG — 하단 전체 폭 -->
+    <svg class="ss-main"
+         viewBox="0 0 1400 420"
+         preserveAspectRatio="xMidYMax slice"
+         xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <linearGradient id="gridFade" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#d4a017" stop-opacity="0"/>
-          <stop offset="60%" stop-color="#d4a017" stop-opacity="0.18"/>
-          <stop offset="100%" stop-color="#d4a017" stop-opacity="0.07"/>
+        <!-- 격자 페이드 -->
+        <linearGradient id="gf" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%"   stop-color="#d4a017" stop-opacity="0"/>
+          <stop offset="55%"  stop-color="#d4a017" stop-opacity="0.14"/>
+          <stop offset="100%" stop-color="#d4a017" stop-opacity="0.06"/>
         </linearGradient>
-        <linearGradient id="horizGlow" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stop-color="#d4a017" stop-opacity="0"/>
-          <stop offset="30%" stop-color="#d4a017" stop-opacity="0.35"/>
-          <stop offset="50%" stop-color="#d4a017" stop-opacity="0.6"/>
-          <stop offset="70%" stop-color="#d4a017" stop-opacity="0.35"/>
+        <!-- 지평선 글로우 -->
+        <linearGradient id="hg" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%"   stop-color="#d4a017" stop-opacity="0"/>
+          <stop offset="25%"  stop-color="#d4a017" stop-opacity="0.4"/>
+          <stop offset="50%"  stop-color="#d4a017" stop-opacity="0.75"/>
+          <stop offset="75%"  stop-color="#d4a017" stop-opacity="0.4"/>
           <stop offset="100%" stop-color="#d4a017" stop-opacity="0"/>
         </linearGradient>
+        <!-- B-2 동체 그라디언트 -->
+        <linearGradient id="b2f" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%"   stop-color="#e8dfc8" stop-opacity="0.28"/>
+          <stop offset="60%"  stop-color="#c8b480" stop-opacity="0.18"/>
+          <stop offset="100%" stop-color="#d4a017" stop-opacity="0.06"/>
+        </linearGradient>
+        <!-- B-2 앞전 그라디언트 -->
+        <linearGradient id="b2e" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%"   stop-color="#d4a017" stop-opacity="0.15"/>
+          <stop offset="40%"  stop-color="#d4a017" stop-opacity="0.8"/>
+          <stop offset="50%"  stop-color="#ffe066" stop-opacity="1.0"/>
+          <stop offset="60%"  stop-color="#d4a017" stop-opacity="0.8"/>
+          <stop offset="100%" stop-color="#d4a017" stop-opacity="0.15"/>
+        </linearGradient>
+        <!-- 하부 반사광 -->
+        <radialGradient id="b2ref" cx="50%" cy="50%" r="50%">
+          <stop offset="0%"   stop-color="#d4a017" stop-opacity="0.12"/>
+          <stop offset="100%" stop-color="#d4a017" stop-opacity="0"/>
+        </radialGradient>
+        <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+          <feGaussianBlur stdDeviation="3.5" result="b"/>
+          <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+        <filter id="softglow" x="-30%" y="-30%" width="160%" height="160%">
+          <feGaussianBlur stdDeviation="8" result="b"/>
+          <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+        <filter id="edgeglow" x="-5%" y="-50%" width="110%" height="200%">
+          <feGaussianBlur stdDeviation="2" result="b"/>
+          <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
       </defs>
-      <!-- 소실점 원근 격자 -->
-      <g stroke="url(#gridFade)" stroke-width="0.6" fill="none">
-        <!-- 수직선들 (소실점: 700,160) -->
-        <line x1="700" y1="160" x2="0"    y2="260"/>
-        <line x1="700" y1="160" x2="100"  y2="260"/>
-        <line x1="700" y1="160" x2="200"  y2="260"/>
-        <line x1="700" y1="160" x2="300"  y2="260"/>
-        <line x1="700" y1="160" x2="400"  y2="260"/>
-        <line x1="700" y1="160" x2="500"  y2="260"/>
-        <line x1="700" y1="160" x2="600"  y2="260"/>
-        <line x1="700" y1="160" x2="700"  y2="260"/>
-        <line x1="700" y1="160" x2="800"  y2="260"/>
-        <line x1="700" y1="160" x2="900"  y2="260"/>
-        <line x1="700" y1="160" x2="1000" y2="260"/>
-        <line x1="700" y1="160" x2="1100" y2="260"/>
-        <line x1="700" y1="160" x2="1200" y2="260"/>
-        <line x1="700" y1="160" x2="1300" y2="260"/>
-        <line x1="700" y1="160" x2="1400" y2="260"/>
-        <!-- 수평선들 (원근감) -->
-        <line x1="0" y1="175" x2="1400" y2="175"/>
-        <line x1="0" y1="190" x2="1400" y2="190"/>
-        <line x1="0" y1="208" x2="1400" y2="208"/>
-        <line x1="0" y1="228" x2="1400" y2="228"/>
-        <line x1="0" y1="244" x2="1400" y2="244"/>
+
+      <!-- ── 원근 격자 (소실점 700,230) ── -->
+      <g stroke="url(#gf)" stroke-width="0.55" fill="none">
+        <!-- 방사형 선 -->
+        <line x1="700" y1="230" x2="0"    y2="420"/>
+        <line x1="700" y1="230" x2="70"   y2="420"/>
+        <line x1="700" y1="230" x2="140"  y2="420"/>
+        <line x1="700" y1="230" x2="210"  y2="420"/>
+        <line x1="700" y1="230" x2="280"  y2="420"/>
+        <line x1="700" y1="230" x2="350"  y2="420"/>
+        <line x1="700" y1="230" x2="420"  y2="420"/>
+        <line x1="700" y1="230" x2="490"  y2="420"/>
+        <line x1="700" y1="230" x2="560"  y2="420"/>
+        <line x1="700" y1="230" x2="630"  y2="420"/>
+        <line x1="700" y1="230" x2="700"  y2="420"/>
+        <line x1="700" y1="230" x2="770"  y2="420"/>
+        <line x1="700" y1="230" x2="840"  y2="420"/>
+        <line x1="700" y1="230" x2="910"  y2="420"/>
+        <line x1="700" y1="230" x2="980"  y2="420"/>
+        <line x1="700" y1="230" x2="1050" y2="420"/>
+        <line x1="700" y1="230" x2="1120" y2="420"/>
+        <line x1="700" y1="230" x2="1190" y2="420"/>
+        <line x1="700" y1="230" x2="1260" y2="420"/>
+        <line x1="700" y1="230" x2="1330" y2="420"/>
+        <line x1="700" y1="230" x2="1400" y2="420"/>
+        <!-- 수평 원근선 -->
+        <line x1="0" y1="248" x2="1400" y2="248"/>
+        <line x1="0" y1="268" x2="1400" y2="268"/>
+        <line x1="0" y1="292" x2="1400" y2="292"/>
+        <line x1="0" y1="320" x2="1400" y2="320"/>
+        <line x1="0" y1="352" x2="1400" y2="352"/>
+        <line x1="0" y1="388" x2="1400" y2="388"/>
       </g>
-      <!-- 지평선 글로우 -->
-      <line x1="0" y1="160" x2="1400" y2="160" stroke="url(#horizGlow)" stroke-width="1.5"/>
-    </svg>
 
-    <!-- B-2 Spirit 스텔스 폭격기 (우측 상단 ~ 중앙, 글씨와 겹치지 않는 우측 영역) -->
-    <svg class="ss-b2" viewBox="0 0 700 380" preserveAspectRatio="xMaxYMid meet" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="b2body" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#f0e8d8" stop-opacity="0.22"/>
-          <stop offset="50%" stop-color="#c8b890" stop-opacity="0.15"/>
-          <stop offset="100%" stop-color="#d4a017" stop-opacity="0.08"/>
-        </linearGradient>
-        <linearGradient id="b2edge" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="#d4a017" stop-opacity="0.7"/>
-          <stop offset="100%" stop-color="#d4a017" stop-opacity="0.2"/>
-        </linearGradient>
-        <filter id="b2glow">
-          <feGaussianBlur stdDeviation="2.5" result="b"/>
-          <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-        </filter>
-        <filter id="b2softglow">
-          <feGaussianBlur stdDeviation="6" result="b"/>
-          <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-        </filter>
-      </defs>
+      <!-- 지평선 글로우 라인 -->
+      <line x1="0" y1="230" x2="1400" y2="230"
+            stroke="url(#hg)" stroke-width="1.8"/>
+      <!-- 지평선 보조 라인 -->
+      <line x1="0" y1="233" x2="1400" y2="233"
+            stroke="url(#hg)" stroke-width="0.6" opacity="0.4"/>
 
-      <!-- 기체 하부 그림자/반사 (원근감) -->
-      <ellipse cx="350" cy="310" rx="240" ry="18"
-               fill="#d4a017" fill-opacity="0.06"/>
+      <!-- ── B-2 Spirit 비행익 (중앙 하단 — 지평선 바로 위) ── -->
+      <g transform="translate(700, 218)" filter="url(#softglow)">
 
-      <!-- B-2 메인 날개 (비행익 - 전체가 날개+동체 일체형) -->
-      <!-- 후방에서 본 평면도: 부드러운 W 형태 앞전, 재그재그 후연 -->
-      <g transform="translate(350,170)" filter="url(#b2softglow)">
+        <!-- 하부 그림자/반사 -->
+        <ellipse cx="0" cy="52" rx="310" ry="20"
+                 fill="url(#b2ref)" opacity="0.7"/>
 
-        <!-- 날개 하부면 (fill) -->
+        <!-- ▶ 메인 날개 면 (비행익 전체) ◀ -->
+        <!--  앞전: 완만한 M 곡선, 후연: 재그재그 스텔스 패턴  -->
         <path d="
-          M 0,-22
-          C 20,-24 50,-20 90,-10
-          L 200,15
-          C 260,30 310,38 340,42
-          L 330,55
-          C 290,50 230,42 160,32
-          L 80,54
-          C 50,60 20,58 0,56
-          C -20,58 -50,60 -80,54
-          L -160,32
-          C -230,42 -290,50 -330,55
-          L -340,42
-          C -310,38 -260,30 -200,15
-          L -90,-10
-          C -50,-20 -20,-24 0,-22
+          M 0,-26
+          C  18,-28  48,-22  88,-12
+          L  185, 12
+          C  250, 26  305, 36  342, 40
+          L  340, 52
+          C  295, 48  232, 38  165, 28
+          L   78, 50
+          C   48, 56   18, 54    0, 52
+          C  -18, 54  -48, 56  -78, 50
+          L -165, 28
+          C -232, 38 -295, 48 -340, 52
+          L -342, 40
+          C -305, 36 -250, 26 -185, 12
+          L  -88,-12
+          C  -48,-22  -18,-28    0,-26
           Z"
-          fill="url(#b2body)" />
+          fill="url(#b2f)"/>
 
-        <!-- 날개 상부 앞전 강조선 (leading edge) -->
-        <path d="M 0,-22 C 20,-24 50,-20 90,-10 L 200,15 C 260,30 310,38 340,42"
-              fill="none" stroke="url(#b2edge)" stroke-width="1.2" filter="url(#b2glow)"/>
-        <path d="M 0,-22 C -20,-24 -50,-20 -90,-10 L -200,15 C -260,30 -310,38 -340,42"
-              fill="none" stroke="url(#b2edge)" stroke-width="1.2" filter="url(#b2glow)"/>
+        <!-- ▶ 앞전 강조선 (leading edge glow) ◀ -->
+        <path d="M 0,-26 C 18,-28 48,-22 88,-12 L 185,12 C 250,26 305,36 342,40"
+              fill="none" stroke="url(#b2e)" stroke-width="1.4"
+              filter="url(#edgeglow)"/>
+        <path d="M 0,-26 C -18,-28 -48,-22 -88,-12 L -185,12 C -250,26 -305,36 -342,40"
+              fill="none" stroke="url(#b2e)" stroke-width="1.4"
+              filter="url(#edgeglow)"/>
 
-        <!-- 재그재그 후연 (trailing edge - 스텔스 특징) -->
+        <!-- ▶ 재그재그 후연 (trailing edge — 스텔스 특징) ◀ -->
         <path d="
-          M -330,55
-          L -280,47 L -240,58 L -200,48 L -155,56
-          L -110,46 L -65,54  L -28,50
-          L 0,56
-          L 28,50  L 65,54  L 110,46
-          L 155,56 L 200,48  L 240,58 L 280,47 L 330,55"
-          fill="none" stroke="#d4a017" stroke-width="0.9"
-          stroke-opacity="0.5" filter="url(#b2glow)"/>
+          M -340,52
+          L -295,44  L -255,54  L -215,44
+          L -170,52  L -130,43  L  -88,52
+          L  -50,44  L  -22,50   L    0,52
+          L   22,50   L   50,44   L   88,52
+          L  130,43  L  170,52  L  215,44
+          L  255,54  L  295,44  L  340,52"
+          fill="none" stroke="#d4a017" stroke-width="1.1"
+          stroke-opacity="0.55" filter="url(#glow)"/>
 
-        <!-- 동체 중심부 (조금 볼록하게) -->
-        <path d="M -55,-18 C -30,-26 30,-26 55,-18 L 65,15 C 40,22 -40,22 -65,15 Z"
-              fill="rgba(240,232,216,0.12)" stroke="#d4a017" stroke-width="0.7" stroke-opacity="0.45"/>
+        <!-- ▶ 동체 중심부 볼록 ◀ -->
+        <path d="M -52,-20 C -28,-30 28,-30 52,-20
+                 L  62, 10 C  38, 18 -38, 18 -62, 10 Z"
+              fill="rgba(232,220,196,0.12)"
+              stroke="#d4a017" stroke-width="0.6" stroke-opacity="0.4"/>
 
-        <!-- 엔진 공기흡입구 (4개 — 등 위쪽에 위치) -->
-        <ellipse cx="-90" cy="-4" rx="22" ry="7" fill="rgba(10,16,24,0.6)"
-                 stroke="#d4a017" stroke-width="0.7" stroke-opacity="0.35"
-                 transform="rotate(-5,-90,-4)"/>
-        <ellipse cx="-130" cy="4" rx="22" ry="7" fill="rgba(10,16,24,0.6)"
-                 stroke="#d4a017" stroke-width="0.7" stroke-opacity="0.35"
-                 transform="rotate(-5,-130,4)"/>
-        <ellipse cx="90" cy="-4" rx="22" ry="7" fill="rgba(10,16,24,0.6)"
-                 stroke="#d4a017" stroke-width="0.7" stroke-opacity="0.35"
-                 transform="rotate(5,90,-4)"/>
-        <ellipse cx="130" cy="4" rx="22" ry="7" fill="rgba(10,16,24,0.6)"
-                 stroke="#d4a017" stroke-width="0.7" stroke-opacity="0.35"
-                 transform="rotate(5,130,4)"/>
+        <!-- ▶ 엔진 공기흡입구 4개 (위쪽 등면) ◀ -->
+        <ellipse cx="-82"  cy="-6" rx="20" ry="6.5"
+                 fill="rgba(8,14,22,0.65)" stroke="#d4a017"
+                 stroke-width="0.65" stroke-opacity="0.35"
+                 transform="rotate(-6,-82,-6)"/>
+        <ellipse cx="-118" cy=" 2" rx="20" ry="6.5"
+                 fill="rgba(8,14,22,0.65)" stroke="#d4a017"
+                 stroke-width="0.65" stroke-opacity="0.35"
+                 transform="rotate(-6,-118,2)"/>
+        <ellipse cx=" 82"  cy="-6" rx="20" ry="6.5"
+                 fill="rgba(8,14,22,0.65)" stroke="#d4a017"
+                 stroke-width="0.65" stroke-opacity="0.35"
+                 transform="rotate(6,82,-6)"/>
+        <ellipse cx=" 118" cy=" 2" rx="20" ry="6.5"
+                 fill="rgba(8,14,22,0.65)" stroke="#d4a017"
+                 stroke-width="0.65" stroke-opacity="0.35"
+                 transform="rotate(6,118,2)"/>
 
-        <!-- 엔진 배기구 (후방, 슬롯형) -->
-        <rect x="-105" y="28" width="38" height="9" rx="4"
-              fill="rgba(212,160,23,0.2)" stroke="#d4a017" stroke-width="0.6" stroke-opacity="0.4"/>
-        <rect x="67" y="28" width="38" height="9" rx="4"
-              fill="rgba(212,160,23,0.2)" stroke="#d4a017" stroke-width="0.6" stroke-opacity="0.4"/>
+        <!-- ▶ 엔진 배기슬롯 (후방) ◀ -->
+        <rect x="-100" y="30" width="36" height="8" rx="4"
+              fill="rgba(212,160,23,0.22)"
+              stroke="#d4a017" stroke-width="0.55" stroke-opacity="0.45"/>
+        <rect x="  64" y="30" width="36" height="8" rx="4"
+              fill="rgba(212,160,23,0.22)"
+              stroke="#d4a017" stroke-width="0.55" stroke-opacity="0.45"/>
 
-        <!-- 웨폰베이 도어 라인 (점선) -->
-        <path d="M -25,10 L 25,10" stroke="#d4a017" stroke-width="0.5"
-              stroke-opacity="0.3" stroke-dasharray="3,2"/>
-        <path d="M -30,20 L 30,20" stroke="#d4a017" stroke-width="0.5"
-              stroke-opacity="0.3" stroke-dasharray="3,2"/>
+        <!-- ▶ 배기열 (엔진 글로우) ◀ -->
+        <ellipse cx="-82" cy="34" rx="12" ry="4"
+                 fill="#d4a017" fill-opacity="0.18" filter="url(#glow)"/>
+        <ellipse cx=" 82" cy="34" rx="12" ry="4"
+                 fill="#d4a017" fill-opacity="0.18" filter="url(#glow)"/>
 
-        <!-- 레이더 흡수 패널 구획선 -->
-        <path d="M -180,20 L -60,0 M 60,0 L 180,20"
-              stroke="#d4a017" stroke-width="0.4" stroke-opacity="0.18"/>
-        <path d="M -260,32 L -140,12 M 140,12 L 260,32"
-              stroke="#d4a017" stroke-width="0.4" stroke-opacity="0.14"/>
+        <!-- ▶ 웨폰베이 도어 라인 ◀ -->
+        <line x1="-24" y1=" 8" x2="24" y2=" 8"
+              stroke="#d4a017" stroke-width="0.5"
+              stroke-opacity="0.28" stroke-dasharray="3,2"/>
+        <line x1="-28" y1="20" x2="28" y2="20"
+              stroke="#d4a017" stroke-width="0.5"
+              stroke-opacity="0.28" stroke-dasharray="3,2"/>
 
-        <!-- 기체 중심 글로우 포인트 -->
-        <circle cx="0" cy="0" r="3"
-                fill="#d4a017" fill-opacity="0.4" filter="url(#b2glow)"/>
+        <!-- ▶ RAS 패널 구획선 ◀ -->
+        <path d="M -170,18 L -55, 0 M  55, 0 L  170,18"
+              stroke="#d4a017" stroke-width="0.35" stroke-opacity="0.18"/>
+        <path d="M -255,30 L -130,10 M 130,10 L  255,30"
+              stroke="#d4a017" stroke-width="0.3"  stroke-opacity="0.13"/>
+
+        <!-- ▶ 중심점 글로우 ◀ -->
+        <circle cx="0" cy="0" r="3.5"
+                fill="#d4a017" fill-opacity="0.5"
+                filter="url(#glow)"/>
+
+        <!-- ▶ HUD 타겟 링 ◀ -->
+        <circle cx="0" cy="12" r="72"
+                fill="none" stroke="#d4a017"
+                stroke-width="0.45" stroke-opacity="0.12"
+                stroke-dasharray="5,7"/>
+        <circle cx="0" cy="12" r="130"
+                fill="none" stroke="#d4a017"
+                stroke-width="0.35" stroke-opacity="0.08"
+                stroke-dasharray="4,10"/>
       </g>
 
-      <!-- HUD 오버레이: 타겟 링 -->
-      <g transform="translate(350,170)" fill="none" stroke="#d4a017" stroke-opacity="0.18">
-        <circle cx="0" cy="0" r="80"  stroke-width="0.5" stroke-dasharray="4,6"/>
-        <circle cx="0" cy="0" r="140" stroke-width="0.4" stroke-dasharray="3,8"/>
-        <circle cx="0" cy="0" r="210" stroke-width="0.3" stroke-dasharray="2,10"/>
+      <!-- ── HUD 데이터 오버레이 (우측, 텍스트 없는 영역) ── -->
+      <g font-family="'JetBrains Mono',monospace" font-size="9.5"
+         fill="#d4a017" fill-opacity="0.38" letter-spacing="0.06em">
+        <text x="1060" y="195">ALT ▸ 15,240 m</text>
+        <text x="1060" y="210">SPD ▸ 0.95 MACH</text>
+        <text x="1060" y="225">HDG ▸ 270°</text>
+        <text x="1060" y="240">RCS ▸ &lt;0.001 m²</text>
+        <line x1="1055" y1="186" x2="1055" y2="246"
+              stroke="#d4a017" stroke-opacity="0.2" stroke-width="0.6"/>
       </g>
 
-      <!-- 고도/속도 HUD 텍스트 (우측 상단) -->
-      <g font-family="'JetBrains Mono',monospace" fill="#d4a017" fill-opacity="0.35" font-size="8.5">
-        <text x="580" y="30">ALT: 15,240m</text>
-        <text x="580" y="44">SPD: 0.95 MACH</text>
-        <text x="580" y="58">HDG: 270°</text>
-        <text x="580" y="72">RCS: &lt;0.001 m²</text>
-        <line x1="575" y1="24" x2="575" y2="78" stroke="#d4a017" stroke-opacity="0.2" stroke-width="0.5"/>
-      </g>
-
-      <!-- 기체 레이블 -->
-      <text x="350" y="355" font-family="'JetBrains Mono',monospace" font-size="9"
-            fill="#d4a017" fill-opacity="0.4" text-anchor="middle">
-        B-2 SPIRIT · NORTHROP GRUMMAN · FLYING WING · LOW-OBSERVABLE
+      <!-- ── 기체 레이블 ── -->
+      <text x="700" y="410"
+            font-family="'JetBrains Mono',monospace" font-size="9"
+            fill="#d4a017" fill-opacity="0.32"
+            text-anchor="middle" letter-spacing="0.18em">
+        B-2 SPIRIT · NORTHROP GRUMMAN · FLYING WING STEALTH BOMBER
       </text>
-    </svg>
 
-    <!-- 우측 상단 F-35 소형 실루엣 (거리감) -->
-    <svg class="ss-f35" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
-      <g transform="translate(100,55)" opacity="0.35">
-        <!-- F-35 측면 실루엣 (간략) -->
-        <path d="M 60,0 L -40,-6 L -55,0 L -40,6 L 60,0 Z"
-              fill="#d4a017" fill-opacity="0.2" stroke="#d4a017" stroke-width="0.7"/>
-        <path d="M -20,-6 L -50,-22 L -45,-6" fill="#d4a017" fill-opacity="0.15"/>
-        <path d="M -20,6 L -50,22 L -45,6" fill="#d4a017" fill-opacity="0.15"/>
-        <path d="M -40,-6 L -52,-14 L -50,-6" fill="#d4a017" fill-opacity="0.12"/>
-        <path d="M -40,6 L -52,14 L -50,6" fill="#d4a017" fill-opacity="0.12"/>
-        <!-- 엔진 글로우 -->
-        <ellipse cx="-55" cy="0" rx="4" ry="3" fill="#d4a017" fill-opacity="0.3"/>
+      <!-- ── 원거리 F-35 실루엣 (좌측 원경) ── -->
+      <g transform="translate(200,195)" opacity="0.28">
+        <path d="M 50,0 L -34,-5 L -45,0 L -34,5 L 50,0 Z"
+              fill="#d4a017" fill-opacity="0.2"
+              stroke="#d4a017" stroke-width="0.7"/>
+        <path d="M -16,-5 L -42,-18 L -38,-5" fill="#d4a017" fill-opacity="0.15"/>
+        <path d="M -16, 5 L -42, 18 L -38, 5" fill="#d4a017" fill-opacity="0.15"/>
+        <ellipse cx="-45" cy="0" rx="4" ry="2.5"
+                 fill="#d4a017" fill-opacity="0.35"
+                 filter="url(#glow)"/>
       </g>
-      <text x="100" y="108" font-family="'JetBrains Mono',monospace" font-size="7.5"
-            fill="#d4a017" fill-opacity="0.3" text-anchor="middle">F-35 LIGHTNING II</text>
-    </svg>
+      <text x="200" y="222"
+            font-family="'JetBrains Mono',monospace" font-size="8"
+            fill="#d4a017" fill-opacity="0.22"
+            text-anchor="middle" letter-spacing="0.12em">F-35B</text>
+
+    </svg><!-- end .ss-main -->
 
   </div>
   <!-- ═══ END STEALTH SCENE ═══ -->
