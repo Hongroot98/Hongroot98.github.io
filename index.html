@@ -651,17 +651,6 @@
       pointer-events:none;
     }
 
-
-    /* ── ROBOT ILLUSTRATION ── */
-    .robot-illust-wrap{
-      display:flex;justify-content:flex-end;
-      margin-bottom:2.5rem;
-    }
-    .robot-illust{
-      width:100%;max-width:480px;
-      height:auto;opacity:0.88;
-    }
-
     @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
     @keyframes fadeIn{from{opacity:0}to{opacity:1}}
     @keyframes scrollPulse{0%,100%{opacity:.3}50%{opacity:1}}
@@ -1250,126 +1239,7 @@
     </defs>
   </svg>
 </div>
-
-
-    <!-- Robot Arm Illustration -->
-    <div class="robot-illust-wrap reveal">
-      <svg class="robot-illust" viewBox="0 0 520 200" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="rg" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stop-color="#0f2540" stop-opacity="0.9"/>
-            <stop offset="100%" stop-color="#1a3a5c" stop-opacity="0.7"/>
-          </linearGradient>
-          <filter id="rjg">
-            <feGaussianBlur stdDeviation="2" result="b"/>
-            <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-          </filter>
-        </defs>
-
-        <!-- 베이스 -->
-        <rect x="28" y="148" width="64" height="10" rx="3"
-              fill="#0f2540" stroke="#b8860b" stroke-width="0.8" stroke-opacity="0.5"/>
-        <rect x="38" y="136" width="44" height="14" rx="3"
-              fill="#1a3a5c" stroke="#b8860b" stroke-width="0.8" stroke-opacity="0.4"/>
-
-        <!-- Link 1 (수직) -->
-        <rect x="51" y="84" width="14" height="54" rx="4"
-              fill="url(#rg)" stroke="#b8860b" stroke-width="0.8" stroke-opacity="0.45"/>
-
-        <!-- Joint 1 -->
-        <circle cx="58" cy="84" r="10"
-                fill="#0f2540" stroke="#b8860b" stroke-width="1.2" stroke-opacity="0.6"
-                filter="url(#rjg)"/>
-        <circle cx="58" cy="84" r="4" fill="#b8860b" fill-opacity="0.55"/>
-
-        <!-- Link 2 (대각 상단) -->
-        <g transform="rotate(-28, 58, 84)">
-          <rect x="51" y="36" width="14" height="52" rx="4"
-                fill="url(#rg)" stroke="#b8860b" stroke-width="0.8" stroke-opacity="0.45"/>
-        </g>
-
-        <!-- Joint 2 -->
-        <circle cx="74" cy="46" r="9"
-                fill="#0f2540" stroke="#b8860b" stroke-width="1.2" stroke-opacity="0.6"
-                filter="url(#rjg)"/>
-        <circle cx="74" cy="46" r="3.5" fill="#b8860b" fill-opacity="0.55"/>
-
-        <!-- Forearm (수평) -->
-        <rect x="74" y="39" width="88" height="13" rx="4"
-              fill="url(#rg)" stroke="#b8860b" stroke-width="0.8" stroke-opacity="0.45"/>
-
-        <!-- Wrist Joint -->
-        <circle cx="162" cy="45" r="9"
-                fill="#0f2540" stroke="#b8860b" stroke-width="1.2" stroke-opacity="0.6"
-                filter="url(#rjg)"/>
-        <circle cx="162" cy="45" r="3.5" fill="#b8860b" fill-opacity="0.55"/>
-
-        <!-- Tool holder (짧은 수평 링크) -->
-        <rect x="162" y="39" width="28" height="13" rx="3"
-              fill="#1a3a5c" stroke="#b8860b" stroke-width="0.8" stroke-opacity="0.4"/>
-
-        <!-- ── 집게형 End Effector (Parallel Gripper) ── -->
-        <!-- 그리퍼 바디 -->
-        <rect x="188" y="38" width="18" height="15" rx="2"
-              fill="#0f2540" stroke="#b8860b" stroke-width="0.9" stroke-opacity="0.55"/>
-        <!-- 상단 핑거 -->
-        <rect x="204" y="32" width="36" height="8" rx="2"
-              fill="#1a3a5c" stroke="#b8860b" stroke-width="0.85" stroke-opacity="0.55"/>
-        <!-- 하단 핑거 -->
-        <rect x="204" y="50" width="36" height="8" rx="2"
-              fill="#1a3a5c" stroke="#b8860b" stroke-width="0.85" stroke-opacity="0.55"/>
-        <!-- 핑거 팁 강조 -->
-        <rect x="236" y="32" width="6" height="8" rx="1"
-              fill="#b8860b" fill-opacity="0.35"/>
-        <rect x="236" y="50" width="6" height="8" rx="1"
-              fill="#b8860b" fill-opacity="0.35"/>
-        <!-- 그리퍼 개방 공간 -->
-        <rect x="204" y="40" width="36" height="10"
-              fill="none" stroke="#b8860b" stroke-width="0.4"
-              stroke-opacity="0.2" stroke-dasharray="2,2"/>
-
-        <!-- 힘 벡터 화살표 -->
-        <line x1="242" y1="36" x2="270" y2="26"
-              stroke="#b8860b" stroke-width="0.9" stroke-opacity="0.4"
-              stroke-dasharray="3,2"/>
-        <polygon points="270,22 278,28 268,32"
-                 fill="#b8860b" fill-opacity="0.35"/>
-        <text x="280" y="24" font-family="'JetBrains Mono',monospace"
-              font-size="8" fill="#b8860b" fill-opacity="0.45">F</text>
-
-        <!-- 관절 각도 표시 호 -->
-        <path d="M 68,84 A 18,18 0 0,1 58,66"
-              fill="none" stroke="#b8860b" stroke-width="0.6"
-              stroke-opacity="0.3" stroke-dasharray="2,2"/>
-        <text x="72" y="72" font-family="'JetBrains Mono',monospace"
-              font-size="7.5" fill="#b8860b" fill-opacity="0.4">θ₁</text>
-
-        <path d="M 83,46 A 14,14 0 0,0 74,32"
-              fill="none" stroke="#b8860b" stroke-width="0.6"
-              stroke-opacity="0.3" stroke-dasharray="2,2"/>
-        <text x="86" y="36" font-family="'JetBrains Mono',monospace"
-              font-size="7.5" fill="#b8860b" fill-opacity="0.4">θ₂</text>
-
-        <!-- 운동방정식 -->
-        <text x="310" y="80" font-family="'JetBrains Mono',monospace"
-              font-size="8.5" fill="#0f2540" fill-opacity="0.45">M(q)q̈ + C(q,q̇)q̇</text>
-        <text x="310" y="94" font-family="'JetBrains Mono',monospace"
-              font-size="8.5" fill="#0f2540" fill-opacity="0.45">+ G(q) = τ + JᵀF</text>
-        <line x1="306" y1="72" x2="306" y2="100"
-              stroke="#b8860b" stroke-opacity="0.2" stroke-width="0.5"/>
-
-        <!-- 레이블 -->
-        <text x="58" y="175" font-family="'JetBrains Mono',monospace"
-              font-size="8" fill="#0f2540" fill-opacity="0.38" text-anchor="middle">
-          UR3 MANIPULATOR
-        </text>
-        <text x="207" y="175" font-family="'JetBrains Mono',monospace"
-              font-size="8" fill="#0f2540" fill-opacity="0.38" text-anchor="middle">
-          PARALLEL GRIPPER
-        </text>
-      </svg>
-    </div>
-
+    
     <div class="research-grid">
       <div class="research-card reveal"><div class="rc-icon">🤿</div><div class="rc-title">수중건설로봇</div><div class="rc-desc">수중 환경 건설로봇 동역학 모델링 및 실시간 해석. 유체력 효과를 고려한 복합 시스템 연구.</div><div class="rc-tags"><span class="rc-tag">Underwater Construction Robot</span><span class="rc-tag">Hydro-dynamics</span></div></div>
       <div class="research-card reveal"><div class="rc-icon">⚙️</div><div class="rc-title">다물체 동역학</div><div class="rc-desc">복수 강체 구성 기계 시스템 운동 해석. 실시간 시뮬레이션 기법 개발 및 적용.</div><div class="rc-tags"><span class="rc-tag">Multibody Dynamics</span><span class="rc-tag">Real-time Analysis</span></div></div>
