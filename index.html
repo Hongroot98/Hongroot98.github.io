@@ -68,7 +68,7 @@
       min-height:100vh;
       background:var(--navy);
       display:grid;place-items:center;
-      position:relative;padding:7rem 3rem 4rem;
+      position:relative;padding:7rem 3rem 8rem;
       overflow:hidden;
     }
     /* 배경 기하학 패턴 */
@@ -106,7 +106,7 @@
     .hero-name{
       font-family:var(--display);
       font-size:clamp(5rem,12vw,10.5rem);
-      line-height:.88;
+      line-height:.9;
       letter-spacing:.02em;
       text-transform:uppercase;
       color:#f0ede8;
@@ -114,7 +114,10 @@
     }
     .hero-name .gold{
       color:var(--gold2);
+    }
+    .hero-name .nl{
       display:block;
+      line-height:.92;
     }
     .hero-sub{
       font-family:var(--mono);font-size:.85rem;
@@ -130,14 +133,14 @@
     .hero-stats{
       display:flex;gap:3rem;margin-top:2.5rem;
       opacity:0;animation:fadeUp .6s .9s ease forwards;
-    }
+    position:relative;z-index:11;}
     .hs{}
     .hs-val{font-family:var(--display);font-size:2.4rem;color:var(--gold2);line-height:1}
     .hs-lbl{font-family:var(--mono);font-size:.65rem;color:rgba(240,237,232,.4);letter-spacing:.15em;text-transform:uppercase;margin-top:.25rem}
     .hero-cta{
       display:flex;gap:1rem;margin-top:2.8rem;
       opacity:0;animation:fadeUp .6s 1s ease forwards;
-    }
+    position:relative;z-index:11;}
     .btn{
       font-family:var(--mono);font-size:.8rem;
       letter-spacing:.15em;text-transform:uppercase;
@@ -611,7 +614,7 @@
     .stealth-scene{
       position:absolute;
       bottom:0;left:0;right:0;
-      height:36%;
+      height:28%;
       pointer-events:none;
       overflow:hidden;
       z-index:2;
@@ -938,11 +941,7 @@
   <div class="hero-inner">
     <div>
       <div class="hero-label">UST · ADD · Weapons System Engineering</div>
-      <h1 class="hero-name">
-        NOH<br>
-        <span class="gold">HONG</span><br>
-        GEUN
-      </h1>
+      <h1 class="hero-name"><span class="nl">NOH</span><span class="nl gold">HONG</span><span class="nl">GEUN</span></h1>
       <p class="hero-sub">
         UST 무기체계공학<span class="dot">·</span>ADD 석사과정<span class="dot">·</span>충남대 메카트로닉스
       </p>
